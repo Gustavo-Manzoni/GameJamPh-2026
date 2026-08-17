@@ -2181,7 +2181,7 @@ GameObject:
   - component: {fileID: 1942390197}
   - component: {fileID: 1942390196}
   - component: {fileID: 1942390198}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
