@@ -19,6 +19,17 @@ public class FollowerPerson : MonoBehaviour
 
     [SerializeField] private float facingRotationSpeed = 12f;
 
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject angryFace;
+    [SerializeField] private GameObject happyFace;
+
+    [SerializeField] private GameObject trashPrefab;
+    [SerializeField] private Transform throwPoint;
+    [SerializeField] private float throwIntervalMin = 2f;
+    [SerializeField] private float throwIntervalMax = 5f;
+    [SerializeField] private float throwRadiusMin = 1f;
+    [SerializeField] private float throwRadiusMax = 2.5f;
+
     private State state = State.Idle;
     private PositionRecorder recorder;
     private PositionRecorder target;
@@ -28,6 +39,7 @@ public class FollowerPerson : MonoBehaviour
     private float currentFacingY = 0f;
     private float bobTimer;
     private Vector2 lastPos;
+    private float throwTimer;
 
     public PositionRecorder Recorder => recorder;
     public bool IsIdle => state == State.Idle;
@@ -41,11 +53,10 @@ public class FollowerPerson : MonoBehaviour
             damping = positionDamping
         };
         lastPos = transform.position;
+        throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
+     
     }
-    void Start()
-    {
-        ServiceLocator.Get<FollowChainManager>().MaxChainCount++;       
-    }
+
     public void JoinChain(PositionRecorder newTarget, float distanceBack)
     {
         target = newTarget;
@@ -54,6 +65,9 @@ public class FollowerPerson : MonoBehaviour
 
         if (squashStretch != null)
             squashStretch.SnapTo(joinSquashScale);
+
+        if (angryFace != null) angryFace.SetActive(false);
+        if (happyFace != null) happyFace.SetActive(true);
     }
 
     public void SetTarget(PositionRecorder newTarget, float distanceBack)
@@ -62,16 +76,58 @@ public class FollowerPerson : MonoBehaviour
         followDistance = distanceBack;
     }
 
+    public void ReleaseFromChain()
+    {
+        target = null;
+        state = State.Idle;
+        throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
+
+        if (angryFace != null) angryFace.SetActive(true);
+        if (happyFace != null) happyFace.SetActive(false);
+    }
+
     private void Update()
     {
         if (state == State.Idle)
         {
             IdleBreath();
             ApplyFacing();
+            UpdateThrowTimer();
+
+            if (animator != null)
+                animator.SetBool("IsWalking", false);
+
             return;
         }
 
         FollowTarget();
+    }
+
+    private void UpdateThrowTimer()
+    {
+        throwTimer -= Time.deltaTime;
+        if (throwTimer <= 0f)
+            ThrowTrash();
+    }
+
+    private void ThrowTrash()
+    {
+        throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
+
+        if (animator != null)
+            animator.SetTrigger("Throw");
+
+        if (trashPrefab == null) return;
+
+        Vector3 spawnPoint = throwPoint != null ? throwPoint.position : transform.position;
+        GameObject trashObj = Instantiate(trashPrefab, spawnPoint, Quaternion.identity);
+        InstantiableTrash trash = trashObj.GetComponent<InstantiableTrash>();
+        if (trash == null) return;
+
+        Vector2 randomDir = Random.insideUnitCircle.normalized;
+        float randomDist = Random.Range(throwRadiusMin, throwRadiusMax);
+        Vector3 landing = spawnPoint + (Vector3)(randomDir * randomDist);
+        trash.Launch(landing);
     }
 
     private void FollowTarget()
@@ -90,6 +146,9 @@ public class FollowerPerson : MonoBehaviour
             facingTargetY = delta.x > 0f ? 0f : 180f;
 
         ApplyFacing();
+
+        if (animator != null)
+            animator.SetBool("IsWalking", speed > 0.05f);
 
         if (visual == null) return;
 
