@@ -54,8 +54,9 @@ public class FollowerPerson : MonoBehaviour
         };
         lastPos = transform.position;
         throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
-     
+       
     }
+    void Start(){ ServiceLocator.Get<FollowChainManager>().MaxChainCount++;}
 
     public void JoinChain(PositionRecorder newTarget, float distanceBack)
     {
