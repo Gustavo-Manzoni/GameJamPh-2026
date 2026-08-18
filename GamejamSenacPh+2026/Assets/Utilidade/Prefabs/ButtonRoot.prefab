@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: wwwwwwww
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e64c45e41aac9a418ebaa60c16ae7ee, type: 2}
-  m_sharedMaterial: {fileID: 5802191876700846818, guid: 1e64c45e41aac9a418ebaa60c16ae7ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0b5b192e41fed614286f6ec09af77f45, type: 2}
+  m_sharedMaterial: {fileID: 4549738443853824545, guid: 0b5b192e41fed614286f6ec09af77f45, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -283,12 +283,12 @@ MonoBehaviour:
   hoverButtonColor: {r: 0, g: 0, b: 0, a: 1}
   hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
   colorDuration: 0.2
-  clickPunchScale: 0.15
+  clickPunchScale: {x: 0.15, y: 0.15, z: 0.15}
   clickPunchDuration: 0.3
-  hoverSound: {fileID: 0}
-  clickSound: {fileID: 0}
-  sfxVolume: 1
-  sfxPitchVariance: 0.05
+  indicatorOffset: {x: 0, y: 0}
+  indicatorSize: {x: 0, y: 0}
+  selectionColor: {r: 1, g: 1, b: 1, a: 1}
+  deselectionColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &6049159691513207162
 GameObject:
   m_ObjectHideFlags: 0

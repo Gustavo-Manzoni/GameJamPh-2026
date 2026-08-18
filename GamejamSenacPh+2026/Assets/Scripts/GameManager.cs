@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
-using System.Net.Mail;
 using TMPro;
+using DG.Tweening;
+using UnityEditor.ShaderGraph.Internal;
 
 
 public class GameManager : MonoBehaviour
@@ -19,9 +20,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text ratePerSecondText;
     [SerializeField] float normalPersonPollution;
     [SerializeField] float normalFurnacePollution;
+    [SerializeField] CanvasGroup losePanel;
+    [SerializeField] float losePanelFadeDuration;
     float pollution;
     float timer;
-
+    bool isLoosing;
     public float NormalPersonPollution { get => normalPersonPollution; set => normalPersonPollution = value; }
     public float NormalFurnacePollution { get => normalFurnacePollution; set => normalFurnacePollution = value; }
 
@@ -44,8 +47,19 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WinCoroutine());
         
     }
+    public void Lose()
+    {
+            isLoosing = true;
+            losePanel.gameObject.SetActive(true);
+            losePanel.DOFade(1, losePanelFadeDuration).OnComplete(() =>
+            {
+             
+            });
+
+    }
     void Update()
     {
+        if(isLoosing) return;
         timer += Time.deltaTime;
         if(timer >= pollutionAttRate)
         {
@@ -53,7 +67,10 @@ public class GameManager : MonoBehaviour
             barImage.fillAmount = pollution / maxPollution;
             ratePerSecondText.text = pollutionIncreaseRatePerSecond + "/s";
             timer = 0;
-
+            if (pollution >= maxPollution)
+            {
+                Lose();
+            }
         }
 
     }
