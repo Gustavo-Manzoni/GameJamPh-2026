@@ -403,8 +403,8 @@ MonoBehaviour:
   m_text: "Em uma terra muito distante havia certas coisas que n\xE3o podiam ser
     ditas por nenhuma pessoa al\xE9m de uma pessoa em especifico"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e64c45e41aac9a418ebaa60c16ae7ee, type: 2}
-  m_sharedMaterial: {fileID: 5802191876700846818, guid: 1e64c45e41aac9a418ebaa60c16ae7ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0b5b192e41fed614286f6ec09af77f45, type: 2}
+  m_sharedMaterial: {fileID: 4549738443853824545, guid: 0b5b192e41fed614286f6ec09af77f45, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
