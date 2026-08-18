@@ -64,6 +64,7 @@ public class FollowerPerson : MonoBehaviour
 
     public PositionRecorder Recorder => recorder;
     public bool IsIdle => state == State.Idle;
+    FeedbackManager feedbackManager;
 
     private void Awake()
     {
@@ -84,13 +85,16 @@ public class FollowerPerson : MonoBehaviour
 
         lastFacingTargetY = facingTargetY;
     }
-
+    void Start()
+    {
+        feedbackManager = ServiceLocator.Get<FeedbackManager>();
+    }
     public void JoinChain(PositionRecorder newTarget, float distanceBack)
     {
         target = newTarget;
         followDistance = distanceBack;
         state = State.Following;
-
+        feedbackManager.FeedbackOnCollectPerson(transform.position);
         if (squashStretch != null)
             squashStretch.SnapTo(joinSquashScale);
 

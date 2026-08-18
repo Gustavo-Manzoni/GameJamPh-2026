@@ -17,6 +17,8 @@ public class InstantiableTrash : MonoBehaviour
     [SerializeField] private float spinAmount = 360f;
     [SerializeField] private Vector3 landPunch = new Vector3(0.35f, -0.35f, 0f);
     [SerializeField] Vector3 shadowOffset;
+    [SerializeField] float delayToStartFading;
+    [SerializeField] float fadeDuration;
 
     private Vector3 landingPosition;
     private bool flying;
@@ -50,7 +52,11 @@ public class InstantiableTrash : MonoBehaviour
         shadowPos.y = landingPosition.y + shadowOffset.y;
         shadow.position = shadowPos;
     }
-
+    void Start()
+    {
+        visual.GetComponent<SpriteRenderer>().DOFade(0f, fadeDuration).SetDelay(delayToStartFading);
+        shadow.GetComponent<SpriteRenderer>().DOFade(0f, fadeDuration).SetDelay(delayToStartFading);
+    }
     private void OnLanded()
     {
         flying = false;
