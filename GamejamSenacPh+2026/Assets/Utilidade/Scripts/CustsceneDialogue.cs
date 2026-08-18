@@ -121,7 +121,7 @@ public class CutsceneDialogue : MonoBehaviour
        
         string cleanText = ParseCustomTags(rawLine, out List<TextEffect> newEffects);
 
-       
+        int cons = 0;
         int[] visibleIndexMap = BuildVisibleIndexMap(cleanText);
         for (int i = 0; i < newEffects.Count; i++)
         {
@@ -157,8 +157,13 @@ public class CutsceneDialogue : MonoBehaviour
 
             textComponent.maxVisibleCharacters = i + 1;
             revealTime[i] = Time.time;
-
-        
+            //escreve uma letra
+            cons++;
+            if (cons == 5)
+            {
+                ServiceLocator.Get<SoundManager>().Play(SFX.SomEscriva);
+                cons =0;
+            }
             AnimateText();
 
             if (!isWhitespace)
