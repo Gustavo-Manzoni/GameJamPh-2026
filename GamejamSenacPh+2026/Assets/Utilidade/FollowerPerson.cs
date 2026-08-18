@@ -30,6 +30,22 @@ public class FollowerPerson : MonoBehaviour
     [SerializeField] private float throwRadiusMin = 1f;
     [SerializeField] private float throwRadiusMax = 2.5f;
 
+    [SerializeField] private Transform torsoPivot;
+    [SerializeField] private Transform neckPivot;
+
+    [SerializeField] private float torsoSwayAmount = 6f;
+    [SerializeField] private float torsoSwayStiffness = 140f;
+    [SerializeField] private float torsoSwayDamping = 9f;
+
+    [SerializeField] private float headSwayStiffness = 70f;
+    [SerializeField] private float headSwayDamping = 6f;
+
+    [SerializeField] private float idleSwayAmount = 3f;
+    [SerializeField] private float idleSwaySpeed = 1.3f;
+
+    [SerializeField] private float turnKick = 220f;
+    [SerializeField] private float torsoStepSquash = 0.06f;
+
     private State state = State.Idle;
     private PositionRecorder recorder;
     private PositionRecorder target;
@@ -40,6 +56,11 @@ public class FollowerPerson : MonoBehaviour
     private float bobTimer;
     private Vector2 lastPos;
     private float throwTimer;
+
+    private SpringFloat torsoSwaySpring;
+    private SpringFloat headSwaySpring;
+    private Vector3 torsoBaseScale;
+    private float lastFacingTargetY;
 
     public PositionRecorder Recorder => recorder;
     public bool IsIdle => state == State.Idle;
@@ -54,9 +75,15 @@ public class FollowerPerson : MonoBehaviour
         };
         lastPos = transform.position;
         throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
-       
+
+        torsoSwaySpring = new SpringFloat(0f) { stiffness = torsoSwayStiffness, damping = torsoSwayDamping };
+        headSwaySpring = new SpringFloat(0f) { stiffness = headSwayStiffness, damping = headSwayDamping };
+
+        if (torsoPivot != null)
+            torsoBaseScale = torsoPivot.localScale;
+
+        lastFacingTargetY = facingTargetY;
     }
-    void Start(){ ServiceLocator.Get<FollowChainManager>().MaxChainCount++;}
 
     public void JoinChain(PositionRecorder newTarget, float distanceBack)
     {
@@ -94,6 +121,7 @@ public class FollowerPerson : MonoBehaviour
             IdleBreath();
             ApplyFacing();
             UpdateThrowTimer();
+            UpdateBodySway(0f);
 
             if (animator != null)
                 animator.SetBool("IsWalking", false);
@@ -151,18 +179,48 @@ public class FollowerPerson : MonoBehaviour
         if (animator != null)
             animator.SetBool("IsWalking", speed > 0.05f);
 
+        if (speed > 0.05f)
+            bobTimer += Time.deltaTime * walkBobFrequency * (speed / referenceSpeed);
+        else
+            bobTimer = 0f;
+
+        UpdateBodySway(speed);
+
         if (visual == null) return;
 
-        if (speed > 0.05f)
+        float bob = Mathf.Abs(Mathf.Sin(bobTimer)) * walkBobAmplitude;
+        visual.localPosition = new Vector3(visual.localPosition.x, bob, visual.localPosition.z);
+    }
+
+    private void UpdateBodySway(float speed)
+    {
+        if (facingTargetY != lastFacingTargetY)
         {
-            bobTimer += Time.deltaTime * walkBobFrequency * (speed / referenceSpeed);
-            float bob = Mathf.Abs(Mathf.Sin(bobTimer)) * walkBobAmplitude;
-            visual.localPosition = new Vector3(visual.localPosition.x, bob, visual.localPosition.z);
+            torsoSwaySpring.velocity += turnKick;
+            headSwaySpring.velocity += turnKick * 0.6f;
+            lastFacingTargetY = facingTargetY;
         }
-        else
+
+        float swayTarget = speed > 0.05f
+            ? Mathf.Sin(bobTimer) * torsoSwayAmount
+            : Mathf.Sin(Time.time * idleSwaySpeed + GetInstanceID() * 0.1f) * idleSwayAmount;
+
+        float torsoAngle = torsoSwaySpring.Update(swayTarget, Time.deltaTime);
+        float headAngle = headSwaySpring.Update(torsoAngle, Time.deltaTime);
+
+        if (torsoPivot != null)
         {
-            bobTimer = 0f;
+            torsoPivot.localRotation = Quaternion.Euler(0f, 0f, torsoAngle);
+
+            float compress = Mathf.Abs(Mathf.Sin(bobTimer)) * torsoStepSquash;
+            torsoPivot.localScale = new Vector3(
+                torsoBaseScale.x * (1f + compress),
+                torsoBaseScale.y * (1f - compress),
+                torsoBaseScale.z);
         }
+
+        if (neckPivot != null)
+            neckPivot.localRotation = Quaternion.Euler(0f, 0f, headAngle);
     }
 
     private void ApplyFacing()

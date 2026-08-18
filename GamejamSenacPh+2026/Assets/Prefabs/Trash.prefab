@@ -56,6 +56,7 @@ MonoBehaviour:
   squashDuration: 0.12
   spinAmount: 360
   landPunch: {x: 0.35, y: -0.35, z: 0}
+  shadowOffset: {x: 0, y: -0.1, z: 0}
 --- !u!1 &4942024903087105084
 GameObject:
   m_ObjectHideFlags: 0

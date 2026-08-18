@@ -16,6 +16,7 @@ public class InstantiableTrash : MonoBehaviour
     [SerializeField] private float squashDuration = 0.12f;
     [SerializeField] private float spinAmount = 360f;
     [SerializeField] private Vector3 landPunch = new Vector3(0.35f, -0.35f, 0f);
+    [SerializeField] Vector3 shadowOffset;
 
     private Vector3 landingPosition;
     private bool flying;
@@ -42,11 +43,11 @@ public class InstantiableTrash : MonoBehaviour
 
     private void Update()
     {
-        if (!flying || shadow == null) return;
+        if (shadow == null) return;
 
         Vector3 shadowPos = shadow.position;
         shadowPos.x = Mathf.Lerp(shadowPos.x, transform.position.x, Time.deltaTime * shadowFollowSpeed);
-        shadowPos.y = landingPosition.y;
+        shadowPos.y = landingPosition.y + shadowOffset.y;
         shadow.position = shadowPos;
     }
 
