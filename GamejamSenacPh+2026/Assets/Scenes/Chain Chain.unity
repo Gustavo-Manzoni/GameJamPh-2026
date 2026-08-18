@@ -693,7 +693,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310374458}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -3015,6 +3015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f5da4ed34e4f945abe5de5b0e4f220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PositionRecorder
+--- !u!50 &1985418493 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1934586169589462086, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+  m_PrefabInstance: {fileID: 6486482250624424567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2010766180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 890591518668566733, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: walkBobAmplitude
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1607781700294707116, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.90381
@@ -3234,9 +3243,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1663730747456503248, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1985418493}
+    - target: {fileID: 1663730747456503248, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: maxStretch
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663730747456503248, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: reactToVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840529648919612545, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840529648919612545, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131138516150788137, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: velocityInfluence
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8806882705516820899, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174197497843636812, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174197497843636812, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.245
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
