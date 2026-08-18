@@ -7,12 +7,13 @@ public class WinOnCollide : MonoBehaviour
     [SerializeField] float timePerFollower = 0.1f;
     PlayerController _player;
     FollowChainManager _followChainManager;
+    GameManager _gameManager;
     void Start()
     {
         _player = ServiceLocator.Get<PlayerController>();
         _followChainManager = ServiceLocator.Get<FollowChainManager>();
-        
-        }
+        _gameManager = ServiceLocator.Get<GameManager>();
+    }
 
      private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,6 +27,7 @@ public class WinOnCollide : MonoBehaviour
             _player.transform.DOMove(new Vector3(transform.position.x + xAmountForEachFollower * _followChainManager.ChainCount, transform.position.y, transform.position.z), baseMoveTime + timePerFollower * _followChainManager.ChainCount ).SetEase(Ease.InOutSine).OnComplete(() => {
                
             });
+            _gameManager.Win();
 
 
         }
