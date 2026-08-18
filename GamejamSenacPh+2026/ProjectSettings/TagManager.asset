@@ -41,5 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Inimigos
+    uniqueID: 1661101453
+    locked: 0
+  - name: Area
+    uniqueID: 3226220625
+    locked: 0
+  - name: Player
+    uniqueID: 348699843
+    locked: 0
   m_RenderingLayers:
   - Default
