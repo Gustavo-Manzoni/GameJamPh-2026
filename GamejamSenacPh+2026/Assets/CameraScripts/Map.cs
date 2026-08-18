@@ -6,7 +6,7 @@ using System;
 /// works out bounds of camera
 /// and updates camera transform with a direction of movement called from another script
 /// </summary>
-public class CameraTest : MonoBehaviour
+public class Map : MonoBehaviour
 {
 
     /// <summary>
