@@ -4,6 +4,7 @@
 [RequireComponent(typeof(Collider2D))]
 public class PlayerDetectionArea : MonoBehaviour
 {
+    
     private void Reset()
     {
         Collider2D col = GetComponent<Collider2D>();
