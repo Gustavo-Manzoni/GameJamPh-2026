@@ -114,6 +114,23 @@ public class FollowerPerson : MonoBehaviour
         if (happyFace != null) happyFace.SetActive(false);
     }
 
+    public void ReleaseFromChain(Vector2 threatPosition)
+    {
+        ReleaseFromChain();
+
+        Vector2 awayFromThreat = (Vector2)transform.position - threatPosition;
+        if (Mathf.Abs(awayFromThreat.x) > 0.01f)
+            facingTargetY = awayFromThreat.x > 0f ? 0f : 180f;
+
+        
+        if (squashStretch != null)
+            squashStretch.Kick(new Vector2(-0.32f, 0.42f));
+
+        float swayDirection = awayFromThreat.x >= 0f ? 1f : -1f;
+        torsoSwaySpring.velocity += 180f * swayDirection;
+        headSwaySpring.velocity += 110f * swayDirection;
+    }
+
     private void Update()
     {
         if (state == State.Idle)

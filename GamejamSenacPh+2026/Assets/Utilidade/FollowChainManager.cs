@@ -61,6 +61,19 @@ public class FollowChainManager : MonoBehaviour
         }
     }
 
+  
+    public bool ReleaseFromFollowerAndBehind(FollowerPerson person, Vector2 threatPosition)
+    {
+        int firstReleasedIndex = chain.IndexOf(person);
+        if (firstReleasedIndex < 0) return false;
+
+        for (int i = firstReleasedIndex; i < chain.Count; i++)
+            chain[i].ReleaseFromChain(threatPosition);
+
+        chain.RemoveRange(firstReleasedIndex, chain.Count - firstReleasedIndex);
+        return true;
+    }
+
       public IReadOnlyList<Transform> GetChainTransforms(Transform player)
     {
         transformsBuffer.Clear();
