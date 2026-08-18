@@ -239,12 +239,12 @@ MonoBehaviour:
   textComponent: {fileID: 412969058}
   continuePrompt: {fileID: 1098222589}
   lines:
-  - "Em uma terra muito distante havia certas coisas que n\xE3o podiam ser ditas
-    por nenhuma pessoa al\xE9m de uma pessoa em especifico"
-  - "Essa pessoa era conhecida por falar coisas t\xE3o inacreditaveis que ningu\xE9m
-    conseguia acreditar"
-  - "As coisas que essa pessoa falava eram t\xE3o, mas t\xE3o <wave=1>inacreditaveis</wave>
-    que at\xE9 uma pessoa de <shake=1>dois bra\xE7os</shake> n\xE3o acreditava"
+  - Em uma terra muito distante havia certas coisas que nao podiam ser ditas por
+    nenhuma pessoa alem de uma pessoa em especifico
+  - Essa pessoa era conhecida por falar coisas tao inacreditaveis que ninguem conseguia
+    acreditar
+  - "As coisas que essa pessoa falava eram tao, mas tao <wave=1>inacreditaveis</wave>
+    que ate uma pessoa de <shake=1>dois bra\xE7os</shake> n\xE3o acreditava"
   typingSpeed: 0.026
   allowSkipTyping: 0
   scaleInOnAppear: 1
@@ -1108,6 +1108,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 10}
+--- !u!1001 &382224042577831796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 239101729281620034, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.55114
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.99432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913130317148246096, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60a243ae9a831ff42a8950e84f8f73da, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1115,3 +1172,4 @@ SceneRoots:
   - {fileID: 523119379}
   - {fileID: 379293875}
   - {fileID: 1342525894}
+  - {fileID: 382224042577831796}

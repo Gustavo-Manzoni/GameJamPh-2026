@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public enum SFX
 {
     ButtonHover, ButtonClick, ButtonUnhover,
-    CardHover, CardUnhover
+    CardHover, CardUnhover, BatataDoce, JogoComecar, PassoNeutro, SomEscriva
 }
 
 [System.Serializable]
@@ -44,9 +44,12 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+            ServiceLocator.Register(this);
         Instance = this;
         DontDestroyOnLoad(gameObject);
         InitPool();
+
+    
     }
 
 
