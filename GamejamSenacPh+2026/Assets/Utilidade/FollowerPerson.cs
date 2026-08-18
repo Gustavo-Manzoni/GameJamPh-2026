@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PositionRecorder))]
@@ -65,7 +66,11 @@ public class FollowerPerson : MonoBehaviour
     public PositionRecorder Recorder => recorder;
     public bool IsIdle => state == State.Idle;
     FeedbackManager feedbackManager;
-
+    [SerializeField]ParticleSystem dustParticles;
+    [SerializeField] Fire myChimney;
+    [SerializeField] float chimneyCheckInterval = 3;
+    GameManager _gameManager;
+    
     private void Awake()
     {
         recorder = GetComponent<PositionRecorder>();
@@ -85,23 +90,34 @@ public class FollowerPerson : MonoBehaviour
 
         lastFacingTargetY = facingTargetY;
     }
+    
     void Start()
     {
         feedbackManager = ServiceLocator.Get<FeedbackManager>();
+        _gameManager = ServiceLocator.Get<GameManager>();
+        _gameManager.IncreasePollution(_gameManager.NormalPersonPollution);
     }
     public void JoinChain(PositionRecorder newTarget, float distanceBack)
     {
         target = newTarget;
         followDistance = distanceBack;
         state = State.Following;
+        _gameManager.IncreasePollution(-_gameManager.NormalPersonPollution);
         feedbackManager.FeedbackOnCollectPerson(transform.position);
         if (squashStretch != null)
             squashStretch.SnapTo(joinSquashScale);
 
         if (angryFace != null) angryFace.SetActive(false);
         if (happyFace != null) happyFace.SetActive(true);
+        StartCoroutine(PlayDustParticles());
     }
-
+    IEnumerator PlayDustParticles()
+    {
+        yield return new WaitForSeconds(0.5f);
+       
+            dustParticles.Play();
+     
+    }
     public void SetTarget(PositionRecorder newTarget, float distanceBack)
     {
         target = newTarget;
@@ -112,12 +128,12 @@ public class FollowerPerson : MonoBehaviour
     {
         target = null;
         state = State.Idle;
+            _gameManager.IncreasePollution(_gameManager.NormalPersonPollution);
         throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
 
         if (angryFace != null) angryFace.SetActive(true);
         if (happyFace != null) happyFace.SetActive(false);
     }
-
     public void ReleaseFromChain(Vector2 threatPosition)
     {
         ReleaseFromChain();
@@ -136,7 +152,8 @@ public class FollowerPerson : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   if(state != State.Idle)
+        FollowTarget();
         if (state == State.Idle)
         {
             IdleBreath();
@@ -146,13 +163,12 @@ public class FollowerPerson : MonoBehaviour
 
             if (animator != null)
                 animator.SetBool("IsWalking", false);
-
+    
             return;
         }
 
-        FollowTarget();
     }
-
+    
     private void UpdateThrowTimer()
     {
         throwTimer -= Time.deltaTime;
