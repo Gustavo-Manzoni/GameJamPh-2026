@@ -35,6 +35,40 @@ public class PlayerController : MonoBehaviour
     public bool CanMove { get => canMove; set => canMove = value; }
 
 
+
+
+    [SerializeField] private float positionStiffness = 140f;
+    [SerializeField] private float positionDamping = 16f;
+    [SerializeField] private float referenceSpeed = 4.5f;
+
+    [SerializeField] private float walkBobAmplitude = 0.05f;
+    [SerializeField] private float walkBobFrequency = 8f;
+    [SerializeField] private float idleBreathAmplitude = 0.025f;
+    [SerializeField] private float idleBreathSpeed = 2f;
+
+
+    [SerializeField] private Transform torsoPivot;
+    [SerializeField] private Transform neckPivot;
+
+    [SerializeField] private float torsoSwayAmount = 6f;
+    [SerializeField] private float torsoSwayStiffness = 140f;
+    [SerializeField] private float torsoSwayDamping = 9f;
+
+    [SerializeField] private float headSwayStiffness = 70f;
+    [SerializeField] private float headSwayDamping = 6f;
+
+    [SerializeField] private float idleSwayAmount = 3f;
+    [SerializeField] private float idleSwaySpeed = 1.3f;
+    [SerializeField] private float torsoStepSquash = 0.06f;
+
+    private float followDistance;
+    private Vector2 lastPos;
+
+    private SpringFloat torsoSwaySpring;
+    private SpringFloat headSwaySpring;
+    private Vector3 torsoBaseScale;
+   
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,10 +76,21 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
         leanSpring = new SpringFloat(0f) { stiffness = leanStiffness, damping = leanDamping };
         ServiceLocator.Register(this);
+
+
+        lastPos = transform.position;
+
+
+        torsoSwaySpring = new SpringFloat(0f) { stiffness = torsoSwayStiffness, damping = torsoSwayDamping };
+        headSwaySpring = new SpringFloat(0f) { stiffness = headSwayStiffness, damping = headSwayDamping };
+
+        if (torsoPivot != null)
+            torsoBaseScale = torsoPivot.localScale;
  }
 
     private void Update()
     {
+        UpdateBodySway(0);
         if(!canMove)
         {
             input = Vector2.zero;
@@ -56,6 +101,7 @@ public class PlayerController : MonoBehaviour
         input = Vector2.ClampMagnitude(input, 1f);
 
         ApplyVisualJuice();
+
     }
 
     private void FixedUpdate()
@@ -70,7 +116,29 @@ public class PlayerController : MonoBehaviour
         if (!isMoving && wasMoving && squashStretch != null) squashStretch.Kick(stopMoveKick);
         wasMoving = isMoving;
     }
+    private void UpdateBodySway(float speed)
+    {
+        float swayTarget = speed > 0.05f
+            ? Mathf.Sin(bobTimer) * torsoSwayAmount
+            : Mathf.Sin(Time.time * idleSwaySpeed + GetInstanceID() * 0.1f) * idleSwayAmount;
 
+        float torsoAngle = torsoSwaySpring.Update(swayTarget, Time.deltaTime);
+        float headAngle = headSwaySpring.Update(torsoAngle, Time.deltaTime);
+
+        if (torsoPivot != null)
+        {
+            torsoPivot.localRotation = Quaternion.Euler(0f, 0f, torsoAngle);
+
+            float compress = Mathf.Abs(Mathf.Sin(bobTimer)) * torsoStepSquash;
+            torsoPivot.localScale = new Vector3(
+                torsoBaseScale.x * (1f + compress),
+                torsoBaseScale.y * (1f - compress),
+                torsoBaseScale.z);
+        }
+
+        if (neckPivot != null)
+            neckPivot.localRotation = Quaternion.Euler(0f, 0f, headAngle);
+    }
     private void ApplyVisualJuice()
     {
         if (Mathf.Abs(velocity.x) > 0.05f)
