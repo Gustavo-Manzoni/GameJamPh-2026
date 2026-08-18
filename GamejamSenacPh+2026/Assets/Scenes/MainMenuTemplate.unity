@@ -1137,8 +1137,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -632, y: -33.03}
-  m_SizeDelta: {x: 704.82, y: 1315.61}
+  m_AnchoredPosition: {x: -632, y: 0}
+  m_SizeDelta: {x: 839.71, y: 1315.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382044204
 MonoBehaviour:
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 241, y: 0}
+  m_Softness: {x: 255, y: 0}
 --- !u!114 &382044205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5070,7 +5070,7 @@ Transform:
   m_GameObject: {fileID: 2033413202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0999002, y: -1.8483, z: 0}
+  m_LocalPosition: {x: 3.0999002, y: -2.01, z: 0}
   m_LocalScale: {x: 2.7346659, y: 2.8066206, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

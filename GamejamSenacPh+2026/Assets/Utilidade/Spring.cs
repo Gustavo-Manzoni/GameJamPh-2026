@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 [System.Serializable]
 public class SpringFloat
 {
@@ -8,6 +7,8 @@ public class SpringFloat
     public float velocity;
     public float stiffness = 200f;
     public float damping = 15f;
+
+    private const float MaxDeltaTime = 0.05f;
 
     public SpringFloat(float initial = 0f)
     {
@@ -17,6 +18,7 @@ public class SpringFloat
 
     public float Update(float target, float dt)
     {
+        dt = Mathf.Min(dt, MaxDeltaTime);
         float force = (target - value) * stiffness - velocity * damping;
         velocity += force * dt;
         value += velocity * dt;
@@ -30,7 +32,6 @@ public class SpringFloat
     }
 }
 
-
 [System.Serializable]
 public class SpringVector2
 {
@@ -38,6 +39,8 @@ public class SpringVector2
     public Vector2 velocity;
     public float stiffness = 200f;
     public float damping = 15f;
+
+    private const float MaxDeltaTime = 0.05f;
 
     public SpringVector2(Vector2 initial = default)
     {
@@ -47,6 +50,7 @@ public class SpringVector2
 
     public Vector2 Update(Vector2 target, float dt)
     {
+        dt = Mathf.Min(dt, MaxDeltaTime);
         Vector2 force = (target - value) * stiffness - velocity * damping;
         velocity += force * dt;
         value += velocity * dt;
