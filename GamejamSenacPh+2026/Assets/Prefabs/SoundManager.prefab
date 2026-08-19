@@ -45,31 +45,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   soundConfigs:
-  - sound: 5
-    clip: {fileID: 0}
-    volume: 0.794
-    poolSize: 8
+  - sound: 0
+    clips: []
+    volume: 1
+    poolSize: 5
+    mixerGroup: {fileID: 0}
+    randomPitch: 1
+    pitchVariation: 0.2
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    rolloffMode: 0
+  - sound: 2
+    clips: []
+    volume: 1
+    poolSize: 5
+    mixerGroup: {fileID: 0}
+    randomPitch: 1
+    pitchVariation: 0.2
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    rolloffMode: 0
+  - sound: 1
+    clips: []
+    volume: 1
+    poolSize: 5
+    mixerGroup: {fileID: 0}
+    randomPitch: 1
+    pitchVariation: 0.5
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    rolloffMode: 0
+  - sound: 3
+    clips:
+    - {fileID: 8300000, guid: cbc197117f6dca44a83d341aaf458237, type: 3}
+    - {fileID: 8300000, guid: f520d183a8aa2a349a67e7b32a2d45bb, type: 3}
+    - {fileID: 8300000, guid: 1430653d6a83caf4abfa91b5bc631746, type: 3}
+    - {fileID: 8300000, guid: 13350238e5409fe4089402f1a1cad515, type: 3}
+    - {fileID: 8300000, guid: 596db767c79fd3c4aaf48467a0cb12e2, type: 3}
+    - {fileID: 8300000, guid: 89badfdc23aac5d47affdf52fcecc457, type: 3}
+    - {fileID: 8300000, guid: 06e9a6e15806e1a48b3a6a0959d29924, type: 3}
+    - {fileID: 8300000, guid: 8c2e68ae74ae20b47b76d9121dba196b, type: 3}
+    volume: 1
+    poolSize: 10
     mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
     randomPitch: 1
-    pitchVariation: 0.01
-  - sound: 6
-    clip: {fileID: 0}
-    volume: 0.87
-    poolSize: 8
+    pitchVariation: 0.15
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    rolloffMode: 0
+  - sound: 4
+    clips:
+    - {fileID: 8300000, guid: e1206455bddd2854ea29645123a50c07, type: 3}
+    volume: 1
+    poolSize: 5
     mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
     randomPitch: 1
-    pitchVariation: 0.01
-  - sound: 8
-    clip: {fileID: 8300000, guid: d99e5052a5a94f741a82d99cb0070584, type: 3}
-    volume: 0.978
-    poolSize: 8
-    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
-    randomPitch: 1
-    pitchVariation: 0.063
-  - sound: 8
-    clip: {fileID: 8300000, guid: d99e5052a5a94f741a82d99cb0070584, type: 3}
-    volume: 0.978
-    poolSize: 8
-    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
-    randomPitch: 1
-    pitchVariation: 0.063
+    pitchVariation: 0.15
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    rolloffMode: 0

@@ -106,6 +106,7 @@ public class FollowerPerson : MonoBehaviour
         target = newTarget;
         followDistance = distanceBack;
         state = State.Following;
+        ServiceLocator.Get<SoundManager>().Play(SFX.CollectPerson);
         _gameManager.IncreasePollution(-_gameManager.NormalPersonPollution);
         feedbackManager.FeedbackOnCollectPerson(transform.position);
         if (squashStretch != null)

@@ -30,6 +30,7 @@ public class TalkManager : MonoBehaviour
 
         string phrase = phrases[Random.Range(0, phrases.Length)];
         TalkPopup popup = Instantiate(talkPopupPrefab, position + popupOffset, Quaternion.identity);
+        popup.transform.SetParent(transform);
         popup.Show(phrase, color);
     }
 }

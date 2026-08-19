@@ -120,7 +120,7 @@ public class Fire : MonoBehaviour, IFireable
     {
         if (isDying || health == null) return;
         health.TakeDamage(ammount);
-
+ ServiceLocator.Get<SoundManager>().Play(SFX.HitChamine);
          lifebarImage.fillAmount = health.CurrentHealth / health.MaxHealth;
       _feedbackManager.ShakeCamera(cameraShakeIntensity, cameraShakeDuration);
 
