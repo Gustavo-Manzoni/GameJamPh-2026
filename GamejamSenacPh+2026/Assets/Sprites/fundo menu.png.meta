@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: db9593bd9f6dd47449bdcc0dbf07f08e
+guid: 153958307d43aad4c96bc6e4a71fcbe2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -903423516031036176
-    second: cerca dir aberta baixo_0
+      213: 3268768941151584653
+    second: fundo menu_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cerca dir aberta baixo_0
+      name: fundo menu_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 22
-        width: 611
-        height: 320
+        x: 0
+        y: 0
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f45c3549156673f0800000000000000
-      internalID: -903423516031036176
+      spriteID: d818b2688000d5d20800000000000000
+      internalID: 3268768941151584653
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cerca dir aberta baixo_0: -903423516031036176
+      fundo menu_0: 3268768941151584653
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

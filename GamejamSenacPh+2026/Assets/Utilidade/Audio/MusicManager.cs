@@ -5,11 +5,14 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
-    [Header("Settings")]
+   
     [Range(0f, 1f)] public float musicVolume = 1f;
     [SerializeField] float fadeDuration = 1f;
 
-    AudioSource musicSource;
+    [SerializeField]AudioSource musicSource1;
+    [SerializeField] AudioSource musicSource2;
+    bool isUsingSource1 = true;
+
 
     void Awake()
     {
@@ -21,32 +24,58 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.loop = true;
-        musicSource.volume = musicVolume;
+        musicSource1 = gameObject.AddComponent<AudioSource>();
+        musicSource1.loop = true;
+        musicSource1.volume = musicVolume;
+
+        musicSource2 = gameObject.AddComponent<AudioSource>();
+        musicSource2.loop = true;
+        musicSource2.volume = musicVolume;
     }
 
     public void PlayMusic(AudioClip clip)
     {
-        if (musicSource.clip == clip) return;
+      
 
-       
-        musicSource.DOFade(0f, fadeDuration).OnComplete(() =>
+       if(isUsingSource1)
         {
-            musicSource.clip = clip;
-            musicSource.Play();
-            musicSource.DOFade(musicVolume, fadeDuration);
-        });
-    }
-
-    public void StopMusic()
-    {
-        musicSource.DOFade(0f, fadeDuration).OnComplete(() => musicSource.Stop());
+            isUsingSource1 = false;
+            musicSource1.DOFade(0f, fadeDuration).OnComplete(() =>
+            {
+              
+                musicSource1.Stop();
+              
+            });
+            musicSource2.DOFade(1f, fadeDuration).OnComplete(() =>
+            {
+                musicSource2.clip = clip;
+                musicSource2.Play();
+               
+            });
+        }
+        else
+        {
+            isUsingSource1 = true;
+            musicSource1.DOFade(0f, fadeDuration).OnComplete(() =>
+            {
+              
+                musicSource2.Stop();
+              
+            });
+            musicSource1.DOFade(1f, fadeDuration).OnComplete(() =>
+            {
+                musicSource1.clip = clip;
+                musicSource1.Play();
+               
+            });
+        }
+       
     }
 
     public void SetVolume(float value)
     {
         musicVolume = value;
-        musicSource.volume = value;
+        musicSource1.volume = value;
+        musicSource2.volume = value;
     }
 }
