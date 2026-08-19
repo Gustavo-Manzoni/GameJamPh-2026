@@ -23,14 +23,11 @@ public class MusicManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        musicSource1 = gameObject.AddComponent<AudioSource>();
-        musicSource1.loop = true;
         musicSource1.volume = musicVolume;
-
-        musicSource2 = gameObject.AddComponent<AudioSource>();
-        musicSource2.loop = true;
         musicSource2.volume = musicVolume;
+        musicSource1.loop = true;
+        musicSource2.loop = true;
+        
     }
 
     public void PlayMusic(AudioClip clip)
@@ -40,32 +37,32 @@ public class MusicManager : MonoBehaviour
        if(isUsingSource1)
         {
             isUsingSource1 = false;
-            musicSource1.DOFade(0f, fadeDuration).OnComplete(() =>
+            musicSource1.DOFade(0f, fadeDuration-.2f).OnComplete(() =>
             {
               
                 musicSource1.Stop();
               
             });
-            musicSource2.DOFade(1f, fadeDuration).OnComplete(() =>
-            {
                 musicSource2.clip = clip;
                 musicSource2.Play();
+            musicSource2.DOFade(musicVolume, fadeDuration).OnComplete(() =>
+            {
                
             });
         }
         else
         {
             isUsingSource1 = true;
-            musicSource1.DOFade(0f, fadeDuration).OnComplete(() =>
+            musicSource1.DOFade(0f, fadeDuration-.2f).OnComplete(() =>
             {
               
                 musicSource2.Stop();
               
             });
-            musicSource1.DOFade(1f, fadeDuration).OnComplete(() =>
-            {
                 musicSource1.clip = clip;
                 musicSource1.Play();
+            musicSource1.DOFade(musicVolume, fadeDuration).OnComplete(() =>
+            {
                
             });
         }

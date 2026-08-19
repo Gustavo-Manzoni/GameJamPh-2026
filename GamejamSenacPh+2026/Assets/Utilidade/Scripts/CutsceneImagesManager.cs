@@ -2,12 +2,15 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.Events;
+using EasyTransition;
 public class CutsceneImagesManager : MonoBehaviour
 {
     [SerializeField]AudioClip[] cutsceneImages;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TMP_Text pressAnyKeyText;
     [SerializeField] UnityEvent onCanStart;
+    [SerializeField]DemoLoadScene loadScene;
+    [SerializeField] string sceneName;
     int currentIndex;
     void Start()
     {
@@ -22,7 +25,7 @@ public class CutsceneImagesManager : MonoBehaviour
           currentIndex++;
             if (currentIndex >= cutsceneImages.Length)
             {
-               
+               loadScene.LoadScene(sceneName != string.Empty ? sceneName : UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
                 return;
             }
             audioSource.clip = cutsceneImages[currentIndex];
