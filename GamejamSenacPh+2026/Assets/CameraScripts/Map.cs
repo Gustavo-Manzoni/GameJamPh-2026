@@ -35,7 +35,7 @@ public class Map : MonoBehaviour
     /// <summary>
     /// speed of the movement
     /// </summary>
-    public float m_CameraSpeed = 5.0f;
+    public float m_CameraSpeed = 36.0f;
     /// <summary>
     /// flag for if the camera is moving
     /// if this is true the movement code runs
