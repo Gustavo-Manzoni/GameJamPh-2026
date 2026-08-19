@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         pollution += amount;
         barImage.fillAmount = pollution / maxPollution;
+           barSquashStretch.Kick(pollutionUpKick);
     }
     IEnumerator WinCoroutine()
     {
