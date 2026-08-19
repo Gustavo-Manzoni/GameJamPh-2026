@@ -15,6 +15,8 @@ public class SoundConfig
     public SFX sound;
     public List<AudioClip> clips;
 
+   
+
     [Range(0f, 1f)]
     public float volume = 1f;
     public int poolSize = 3;

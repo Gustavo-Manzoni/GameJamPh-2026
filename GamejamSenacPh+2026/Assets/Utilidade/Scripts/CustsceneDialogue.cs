@@ -27,7 +27,7 @@ public class CutsceneDialogue : MonoBehaviour
 
     [SerializeField] private float shakeSpeed = 25f;
 
-    
+     [SerializeField] int soundPerLetters;
     public UnityEvent onLineStarted;
     public UnityEvent onLineFinished;
     public UnityEvent onCutsceneFinished;
@@ -159,7 +159,7 @@ public class CutsceneDialogue : MonoBehaviour
             revealTime[i] = Time.time;
             //escreve uma letra
             cons++;
-            if (cons == 5)
+            if (cons == soundPerLetters)
             {
                 ServiceLocator.Get<SoundManager>().Play(SFX.SomEscriva);
                 cons =0;

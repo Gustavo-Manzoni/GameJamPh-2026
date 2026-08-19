@@ -4,6 +4,7 @@ using UnityEngine;
 public class TrashMine : MonoBehaviour
 {
    [SerializeField] GameObject explosionParticle;
+    int pollution = 10;
     void Start()
     {
         

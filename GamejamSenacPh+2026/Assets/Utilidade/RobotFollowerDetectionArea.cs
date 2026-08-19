@@ -4,6 +4,8 @@ using UnityEngine;
 public class RobotFollowerDetectionArea : MonoBehaviour
 {
     [SerializeField] private RobotPatrol robot;
+    [SerializeField] SquashStretch squashStretch;
+       [SerializeField] private Vector2 captureKick = new Vector2(0.5f, 0.5f);
 
     private void Reset()
     {
@@ -24,7 +26,7 @@ public class RobotFollowerDetectionArea : MonoBehaviour
         if (follower != null)
         {
             robot?.OnFollowerDetected(follower);
-      
+               squashStretch.Kick(captureKick);
         }
         
     }

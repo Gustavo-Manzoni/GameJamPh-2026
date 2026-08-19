@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DemoLoadScene loadScene;
     [SerializeField] float starterDelay;
     [SerializeField] float maxPollution;
-    [SerializeField] float pollutionIncreaseRatePerSecond;
+    float pollutionIncreaseRatePerSecond;
     [SerializeField] float pollutionAttRate;
     [SerializeField] Image barImage;
     [SerializeField] TMP_Text ratePerSecondText;
@@ -28,15 +28,23 @@ public class GameManager : MonoBehaviour
     public float NormalPersonPollution { get => normalPersonPollution; set => normalPersonPollution = value; }
     public float NormalFurnacePollution { get => normalFurnacePollution; set => normalFurnacePollution = value; }
     public float PollutionIncreaseRatePerSecond { get => pollutionIncreaseRatePerSecond; set => pollutionIncreaseRatePerSecond = value; }
+    [SerializeField] SquashStretch barSquashStretch;
+      [SerializeField] private Vector2 pollutionUpKick = new Vector2(0.5f, 0.5f);
 
     void Awake()
     {
         ServiceLocator.Register(this);
+        barImage.fillAmount = pollution / maxPollution;
     }
     public void IncreasePollution(float amount)
     {
         PollutionIncreaseRatePerSecond += amount;
         
+    }
+    public void IncreasePollutionInstantly(int amount)
+    {
+        pollution += amount;
+        barImage.fillAmount = pollution / maxPollution;
     }
     IEnumerator WinCoroutine()
     {
@@ -68,6 +76,7 @@ public class GameManager : MonoBehaviour
             barImage.fillAmount = pollution / maxPollution;
             ratePerSecondText.text = PollutionIncreaseRatePerSecond + "/s";
             timer = 0;
+            barSquashStretch.Kick(pollutionUpKick);
             if (pollution >= maxPollution)
             {
                 Lose();

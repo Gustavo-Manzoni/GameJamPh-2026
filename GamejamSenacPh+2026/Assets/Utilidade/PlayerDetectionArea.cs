@@ -1,3 +1,4 @@
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -11,7 +12,10 @@ public class PlayerDetectionArea : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.isTrigger = true;
     }
-
+    void Awake()
+    {
+        ServiceLocator.Register(this);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         FollowerPerson person = other.GetComponent<FollowerPerson>();
@@ -25,5 +29,9 @@ public class PlayerDetectionArea : MonoBehaviour
 
         if (squashStretch != null)
             squashStretch.Kick(captureKick);
+    }
+    public void FeedbackOnChimneyHit()
+    {
+          squashStretch.Kick(captureKick);
     }
 }
