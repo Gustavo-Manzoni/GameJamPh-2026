@@ -212,6 +212,7 @@ public class FollowerPerson : MonoBehaviour
 
         Vector3 spawnPoint = throwPoint != null ? throwPoint.position : transform.position;
         GameObject trashObj = Instantiate(trashPrefab, spawnPoint, Quaternion.identity);
+        ServiceLocator.Get<SoundManager>().PlayAt(SFX.PaperThrow, spawnPoint);
         InstantiableTrash trash = trashObj.GetComponent<InstantiableTrash>();
         if (trash == null) return;
 
