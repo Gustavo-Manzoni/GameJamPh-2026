@@ -1557,13 +1557,15 @@ ParticleSystem:
     speedRange: {x: 0, y: 1}
     tilesX: 1
     tilesY: 1
-    animationType: 0
+    animationType: 1
     rowIndex: 0
     cycles: 1
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: ab0984a63019d0d48b552d4107bf81aa, type: 3}
+    - sprite: {fileID: 21300000, guid: b1b778c72d562d34fb35c78e1a95c88d, type: 3}
+    - sprite: {fileID: 21300000, guid: fba42a776ee2b71418594577e7f73350, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
