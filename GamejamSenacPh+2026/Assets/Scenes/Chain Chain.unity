@@ -1148,7 +1148,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 85d57476470b72740930ccc460823c2e, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 15c103cf9092cbc40aa06eefbb8efcd9, type: 2}
 --- !u!114 &179552897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10368,7 +10368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c36865cbfe132542a275d886b2d14ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealMine
-  explosionParticle: {fileID: 0}
+  explosionParticle: {fileID: 5574259315015500090, guid: 3f43c7f210b145f4a800715ad6fcef15, type: 3}
   pollutionHealed: 10
 --- !u!1 &1919369580
 GameObject:

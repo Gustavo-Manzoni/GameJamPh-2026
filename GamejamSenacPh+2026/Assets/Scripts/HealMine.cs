@@ -15,7 +15,7 @@ public class HealMine : MonoBehaviour
         {
             if(explosionParticle != null)
             {
-                Instantiate(explosionParticle, transform.position, Quaternion.identity);
+                Instantiate(explosionParticle, transform.position, Quaternion.Euler(0,0,80f));
             }
             
             ServiceLocator.Get<GameManager>().IncreasePollutionInstantly(-pollutionHealed);
