@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public enum SFX
 {
     ButtonHover, ButtonClick, ButtonUnhover, CollectPerson, HitChamine,
-    CardHover, CardUnhover, BatataDoce, JogoComecar, PassoNeutro, SomEscriva, SomFabrica1, SomFabrica2, SomFabrica3, SomFabrica4
+    CardHover, CardUnhover, BatataDoce, JogoComecar, PassoNeutro, SomEscriva, SomFabrica1, SomFabrica2, SomFabrica3, SomFabrica4, PaperBomb1, PaperBomb2
 }
 
 [System.Serializable]

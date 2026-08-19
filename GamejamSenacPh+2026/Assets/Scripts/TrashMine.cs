@@ -16,6 +16,8 @@ public class TrashMine : MonoBehaviour
             Instantiate(explosionParticle, transform.position, Quaternion.identity);
             ServiceLocator.Get<GameManager>().IncreasePollutionInstantly(pollutionOnExplosion);
             ServiceLocator.Get<FeedbackManager>().ShakeCamera(.3f, .2f);
+            ServiceLocator.Get<SoundManager>().PlayAt(SFX.PaperBomb1, transform.position);
+            ServiceLocator.Get<SoundManager>().PlayAt(SFX.PaperBomb2, transform.position);
             Destroy(gameObject);
         }
     }
