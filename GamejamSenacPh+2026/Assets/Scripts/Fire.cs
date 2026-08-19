@@ -62,6 +62,8 @@ public class Fire : MonoBehaviour, IFireable
     [SerializeField] float fireDieDuration = 1f;
  
     [SerializeField] PositionRecorder recorder;
+    [SerializeField] AudioSource fireAudio;
+
 
     public PositionRecorder Recorder { get => recorder; set => recorder = value; }
     GameManager _gameManager;
@@ -82,6 +84,7 @@ public class Fire : MonoBehaviour, IFireable
         baseSpring = new SpringFloat(0f) { stiffness = baseStiffness, damping = baseDamping };
         upperSpring = new SpringFloat(0f) { stiffness = upperStiffness, damping = upperDamping };
         smokeSpring = new SpringFloat(0f) { stiffness = smokeStiffness, damping = smokeDamping };
+        fireAudio.Play();
        
     }
     void Start()
@@ -199,6 +202,7 @@ public class Fire : MonoBehaviour, IFireable
         _gameManager.IncreasePollution(-_gameManager.NormalFurnacePollution);
         fireGameObject.transform.DOScale(0, fireDieDuration).SetEase(fireDieEase).OnComplete(() => Destroy(fireGameObject));
         OnChimneyDestroyed?.Invoke();
+        fireAudio.DOFade(0, fireDieDuration).OnComplete(() => fireAudio.Stop());
     }
    
 }
