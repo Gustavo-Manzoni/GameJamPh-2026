@@ -1,13 +1,17 @@
 using UnityEngine;
 using DG.Tweening;
+using EasyTransition;
+
 public class WinOnCollide : MonoBehaviour
 {
     [SerializeField] float xAmountForEachFollower;
     [SerializeField] float baseMoveTime = 0.5f;
     [SerializeField] float timePerFollower = 0.1f;
+    [SerializeField] DemoLoadScene load;
     PlayerController _player;
     FollowChainManager _followChainManager;
     GameManager _gameManager;
+    [SerializeField] string nextScene;
     void Start()
     {
         _player = ServiceLocator.Get<PlayerController>();
@@ -24,7 +28,7 @@ public class WinOnCollide : MonoBehaviour
                 return;
             }
             _player.CanMove = false;
-            _player.transform.DOMove(new Vector3(transform.position.x + xAmountForEachFollower * _followChainManager.ChainCount, transform.position.y, transform.position.z), baseMoveTime + timePerFollower * _followChainManager.ChainCount ).SetEase(Ease.InOutSine).OnComplete(() => {
+            _player.transform.DOMove(new Vector3(transform.position.x, transform.position.y, transform.position.z), baseMoveTime + timePerFollower * _followChainManager.ChainCount ).SetEase(Ease.InOutSine).OnComplete(() => {
                
             });
             _gameManager.Win();
