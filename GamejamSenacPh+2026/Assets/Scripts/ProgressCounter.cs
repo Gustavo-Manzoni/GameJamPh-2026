@@ -1,4 +1,4 @@
-using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +9,14 @@ public class ProgressCounter : MonoBehaviour
 
     [SerializeField] private Color increaseFlashColor = Color.green;
     [SerializeField] private Color decreaseFlashColor = Color.red;
-    [SerializeField] private float flashDuration = 0.25f;
+    [SerializeField] private float flashColorDuration = 0.3f;
+
+    [Header("Juice")]
+    [SerializeField] private float punchScale = 0.5f;
+    [SerializeField] private float punchRotation = 14f;
+    [SerializeField] private float punchDuration = 0.5f;
+    [SerializeField] private int punchVibrato = 8;
+    [SerializeField, Range(0f, 1f)] private float punchElasticity = 0.85f;
 
     private int convertedPeopleCount;
     private int totalPeopleCount;
@@ -18,15 +25,25 @@ public class ProgressCounter : MonoBehaviour
 
     private Color peopleBaseColor;
     private Color chimneyBaseColor;
-    private Coroutine peopleFlashRoutine;
-    private Coroutine chimneyFlashRoutine;
+    private Vector3 peopleBaseScale;
+    private Vector3 chimneyBaseScale;
+    private Sequence peopleJuiceSequence;
+    private Sequence chimneyJuiceSequence;
 
     private void Awake()
     {
         ServiceLocator.Register(this);
 
-        if (peopleCountText != null) peopleBaseColor = peopleCountText.color;
-        if (chimneyCountText != null) chimneyBaseColor = chimneyCountText.color;
+        if (peopleCountText != null)
+        {
+            peopleBaseColor = peopleCountText.color;
+            peopleBaseScale = peopleCountText.transform.localScale;
+        }
+        if (chimneyCountText != null)
+        {
+            chimneyBaseColor = chimneyCountText.color;
+            chimneyBaseScale = chimneyCountText.transform.localScale;
+        }
     }
 
     private void Start()
@@ -52,7 +69,7 @@ public class ProgressCounter : MonoBehaviour
     {
         convertedPeopleCount = Mathf.Min(convertedPeopleCount + 1, totalPeopleCount);
         UpdatePeopleText();
-        FlashText(peopleCountText, ref peopleFlashRoutine, increaseFlashColor, peopleBaseColor);
+        PlayJuice(peopleCountText, peopleBaseScale, peopleBaseColor, increaseFlashColor, 1f, ref peopleJuiceSequence);
     }
 
     private void HandlePersonUnconverted()
@@ -60,14 +77,14 @@ public class ProgressCounter : MonoBehaviour
         if (convertedPeopleCount <= 0) return;
         convertedPeopleCount--;
         UpdatePeopleText();
-        FlashText(peopleCountText, ref peopleFlashRoutine, decreaseFlashColor, peopleBaseColor);
+        PlayJuice(peopleCountText, peopleBaseScale, peopleBaseColor, decreaseFlashColor, -1f, ref peopleJuiceSequence);
     }
 
     private void HandleChimneyDestroyed()
     {
         destroyedChimneyCount = Mathf.Min(destroyedChimneyCount + 1, totalChimneyCount);
         UpdateChimneyText();
-        FlashText(chimneyCountText, ref chimneyFlashRoutine, increaseFlashColor, chimneyBaseColor);
+        PlayJuice(chimneyCountText, chimneyBaseScale, chimneyBaseColor, increaseFlashColor, 1f, ref chimneyJuiceSequence);
     }
 
     private void UpdatePeopleText()
@@ -82,17 +99,28 @@ public class ProgressCounter : MonoBehaviour
             chimneyCountText.text = $"{destroyedChimneyCount}/{totalChimneyCount}";
     }
 
-    private void FlashText(TMP_Text text, ref Coroutine routine, Color flashColor, Color baseColor)
+    // playful punch-scale + wobble + color flash, killing any in-flight juice so rapid changes don't stack
+    private void PlayJuice(TMP_Text text, Vector3 baseScale, Color baseColor, Color flashColor, float rotationDirection, ref Sequence sequence)
     {
         if (text == null) return;
-        if (routine != null) StopCoroutine(routine);
-        routine = StartCoroutine(FlashRoutine(text, flashColor, baseColor));
-    }
 
-    private IEnumerator FlashRoutine(TMP_Text text, Color flashColor, Color baseColor)
-    {
+        sequence?.Kill();
+
+        Transform t = text.transform;
+        t.localScale = baseScale;
+        t.localRotation = Quaternion.identity;
         text.color = flashColor;
-        yield return new WaitForSeconds(flashDuration);
-        text.color = baseColor;
+
+        Sequence juice = DOTween.Sequence();
+        juice.Append(t.DOPunchScale(Vector3.one * punchScale, punchDuration, punchVibrato, punchElasticity));
+        juice.Join(t.DOPunchRotation(new Vector3(0f, 0f, punchRotation * rotationDirection), punchDuration, punchVibrato, punchElasticity));
+        juice.Join(text.DOColor(baseColor, flashColorDuration).SetDelay(punchDuration * 0.35f));
+        juice.OnComplete(() =>
+        {
+            t.localScale = baseScale;
+            t.localRotation = Quaternion.identity;
+        });
+
+        sequence = juice;
     }
 }

@@ -219,3 +219,31 @@ MonoBehaviour:
     minDistance: 20
     maxDistance: 20
     rolloffMode: 2
+  - sound: 24
+    clips:
+    - {fileID: 8300000, guid: 9a4b510e512e69c4fa196beb973d9d69, type: 3}
+    volume: 0.7
+    poolSize: 9
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2
+  - sound: 23
+    clips:
+    - {fileID: 8300000, guid: 329e728a46d8e894282f3c11bc4f7ca2, type: 3}
+    volume: 0.7
+    poolSize: 9
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2

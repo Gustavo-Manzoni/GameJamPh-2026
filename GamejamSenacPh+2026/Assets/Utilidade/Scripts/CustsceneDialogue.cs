@@ -45,7 +45,7 @@ public class CutsceneDialogue : MonoBehaviour
     private static readonly Regex customTagRegex =
         new Regex(@"<(shake|wave)(?:=([\d.,]+))?>(.*?)</\1>", RegexOptions.Compiled | RegexOptions.Singleline);
     private static readonly Regex tmpTagRegex = new Regex(@"<[^>]+>", RegexOptions.Compiled);
-
+    public UnityEvent onNextLine;
     private struct TextEffect
     {
         public string type;
@@ -92,6 +92,7 @@ public class CutsceneDialogue : MonoBehaviour
         else
         {
             NextLine();
+            onNextLine?.Invoke();
         }
     }
 

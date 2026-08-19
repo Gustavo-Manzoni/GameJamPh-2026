@@ -7,7 +7,15 @@ public class CutsceneCinematicJuice : MonoBehaviour
     
     [SerializeField] Image topBar;
     [SerializeField] Image bottomBar;
+
+    [Header("Personagem 1")]
     [SerializeField] Image characterImage;
+    [SerializeField] CutsceneCharacter characterOwner = CutsceneCharacter.Pai;
+
+    [Header("Personagem 2")]
+    [SerializeField] Image secondCharacterImage;
+    [SerializeField] CutsceneCharacter secondCharacterOwner = CutsceneCharacter.Filho;
+
     [SerializeField] RectTransform dialoguePanel;
     [SerializeField] CanvasGroup canvasGroup;
 
@@ -25,6 +33,12 @@ public class CutsceneCinematicJuice : MonoBehaviour
     [SerializeField] float characterSwayAngle = 1.5f;
     [SerializeField] float characterIdleSpeed = 1.25f;
 
+    [Header("Destaque de quem esta falando")]
+    [SerializeField] float speakingScaleBoost = 0.08f;
+    [SerializeField] float notSpeakingScaleShrink = 0.08f;
+    [SerializeField] float speakingStiffness = 90f;
+    [SerializeField] float speakingDamping = 10f;
+
    
     [SerializeField] float dialogueFloatAmount = 4f;
     [SerializeField] float dialoguePulseAmount = 0.012f;
@@ -32,28 +46,38 @@ public class CutsceneCinematicJuice : MonoBehaviour
 
     RectTransform topBarRect;
     RectTransform bottomBarRect;
+
     RectTransform characterRect;
     Vector3 characterBasePosition;
     Vector3 characterBaseScale;
     Quaternion characterBaseRotation;
+    SpringFloat characterSpeakingSpring;
+
+    RectTransform secondCharacterRect;
+    Vector3 secondCharacterBasePosition;
+    Vector3 secondCharacterBaseScale;
+    Quaternion secondCharacterBaseRotation;
+    SpringFloat secondCharacterSpeakingSpring;
+
     Vector3 dialogueBasePosition;
     Vector3 dialogueBaseScale;
     SpringFloat revealSpring;
     bool isVisible;
+    CutsceneCharacter currentSpeaker = CutsceneCharacter.None;
 
     void Awake()
     {
         topBarRect = topBar != null ? topBar.rectTransform : null;
         bottomBarRect = bottomBar != null ? bottomBar.rectTransform : null;
-        characterRect = characterImage != null ? characterImage.rectTransform : null;
 
         if (canvasGroup == null) canvasGroup = GetComponent<CanvasGroup>();
-        if (characterRect != null)
-        {
-            characterBasePosition = characterRect.anchoredPosition3D;
-            characterBaseScale = characterRect.localScale;
-            characterBaseRotation = characterRect.localRotation;
-        }
+
+        characterRect = CacheCharacterPose(characterImage, out characterBasePosition, out characterBaseRotation, out characterBaseScale);
+        characterSpeakingSpring = new SpringFloat(0f) { stiffness = speakingStiffness, damping = speakingDamping };
+
+        secondCharacterRect = CacheCharacterPose(secondCharacterImage, out secondCharacterBasePosition, out secondCharacterBaseRotation, out secondCharacterBaseScale);
+        secondCharacterSpeakingSpring = new SpringFloat(0f) { stiffness = speakingStiffness, damping = speakingDamping };
+
         if (dialoguePanel != null)
         {
             dialogueBasePosition = dialoguePanel.anchoredPosition3D;
@@ -67,6 +91,15 @@ public class CutsceneCinematicJuice : MonoBehaviour
         };
         isVisible = startVisible;
         ApplyReveal(revealSpring.value, 0f);
+    }
+
+    static RectTransform CacheCharacterPose(Image image, out Vector3 basePosition, out Quaternion baseRotation, out Vector3 baseScale)
+    {
+        RectTransform rect = image != null ? image.rectTransform : null;
+        basePosition = rect != null ? rect.anchoredPosition3D : Vector3.zero;
+        baseRotation = rect != null ? rect.localRotation : Quaternion.identity;
+        baseScale = rect != null ? rect.localScale : Vector3.one;
+        return rect;
     }
 
     void Update()
@@ -90,6 +123,12 @@ public class CutsceneCinematicJuice : MonoBehaviour
         isVisible = !isVisible;
     }
 
+    // sets which character is currently talking so it scales up while the other shrinks a bit
+    public void SetSpeaker(CutsceneCharacter speaker)
+    {
+        currentSpeaker = speaker;
+    }
+
     void ApplyReveal(float reveal, float time)
     {
         if (canvasGroup != null)
@@ -100,20 +139,11 @@ public class CutsceneCinematicJuice : MonoBehaviour
         SetBarHeight(topBarRect, Mathf.Max(0f, topBarHeight * reveal + topWave));
         SetBarHeight(bottomBarRect, Mathf.Max(0f, bottomBarHeight * reveal + bottomWave));
 
-        if (characterRect != null)
-        {
-            float phase = time * characterIdleSpeed + GetInstanceID() * 0.13f;
-            float breath = Mathf.Sin(phase) * characterBreathAmount;
-            float floatY = Mathf.Sin(phase * 0.83f + 0.5f) * characterFloatAmount;
-            float sway = Mathf.Sin(phase * 0.61f) * characterSwayAngle;
+        AnimateCharacter(characterRect, characterBasePosition, characterBaseRotation, characterBaseScale,
+            characterSpeakingSpring, currentSpeaker == characterOwner, reveal, time, GetInstanceID() * 0.13f);
 
-            characterRect.anchoredPosition3D = characterBasePosition + Vector3.up * (floatY * reveal);
-            characterRect.localRotation = characterBaseRotation * Quaternion.Euler(0f, 0f, sway * reveal);
-            characterRect.localScale = new Vector3(
-                characterBaseScale.x * (1f - breath * 0.45f * reveal),
-                characterBaseScale.y * (1f + breath * reveal),
-                characterBaseScale.z);
-        }
+        AnimateCharacter(secondCharacterRect, secondCharacterBasePosition, secondCharacterBaseRotation, secondCharacterBaseScale,
+            secondCharacterSpeakingSpring, currentSpeaker == secondCharacterOwner, reveal, time, GetInstanceID() * 0.13f + 10f);
 
         if (dialoguePanel != null)
         {
@@ -124,9 +154,33 @@ public class CutsceneCinematicJuice : MonoBehaviour
         }
     }
 
+    void AnimateCharacter(RectTransform rect, Vector3 basePosition, Quaternion baseRotation, Vector3 baseScale,
+        SpringFloat speakingSpring, bool isSpeaking, float reveal, float time, float phaseSeed)
+    {
+        if (rect == null) return;
+
+        float emphasisTarget = isSpeaking ? speakingScaleBoost : -notSpeakingScaleShrink;
+        float emphasis = speakingSpring.Update(emphasisTarget, Time.unscaledDeltaTime);
+
+        float phase = time * characterIdleSpeed + phaseSeed;
+        float breath = Mathf.Sin(phase) * characterBreathAmount;
+        float floatY = Mathf.Sin(phase * 0.83f + 0.5f) * characterFloatAmount;
+        float sway = Mathf.Sin(phase * 0.61f) * characterSwayAngle;
+
+        rect.anchoredPosition3D = basePosition + Vector3.up * (floatY * reveal);
+        rect.localRotation = baseRotation * Quaternion.Euler(0f, 0f, sway * reveal);
+
+        float scaleMultiplier = 1f + emphasis * reveal;
+        rect.localScale = new Vector3(
+            baseScale.x * (1f - breath * 0.45f * reveal) * scaleMultiplier,
+            baseScale.y * (1f + breath * reveal) * scaleMultiplier,
+            baseScale.z);
+    }
+
     static void SetBarHeight(RectTransform bar, float height)
     {
         if (bar != null)
             bar.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
     }
 }
+

@@ -63,9 +63,10 @@ public class GameManager : MonoBehaviour
             isLoosing = true;
             losePanel.gameObject.SetActive(true);
              ServiceLocator.Get<SoundManager>().Play(SFX.Derrota);
+             ServiceLocator.Get<PlayerController>().CanMove = false;
             losePanel.DOFade(1, losePanelFadeDuration).OnComplete(() =>
             {
-             
+                
             });
 
     }
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
             ratePerSecondText.text = PollutionIncreaseRatePerSecond + "/s";
             timer = 0;
             barSquashStretch.Kick(pollutionUpKick);
+            ServiceLocator.Get<SoundManager>().Play(SFX.Tick);
             if (pollution >= maxPollution)
             {
                 Lose();

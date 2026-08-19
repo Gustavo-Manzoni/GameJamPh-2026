@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2529292986848563566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4222580687044619463}
+  m_Layer: 0
+  m_Name: Trash Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4222580687044619463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529292986848563566}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2625640449004217258}
+  m_Father: {fileID: 7270288059308436409}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3038101386530086885
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +62,7 @@ Transform:
   m_LocalScale: {x: 0.14605962, y: 0.14605962, z: 0.14605962}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2625640449004217258}
+  - {fileID: 4222580687044619463}
   - {fileID: 3179076949193730200}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e560c7c5b7ed3f49ad6849d38449c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InstantiableTrash
-  visual: {fileID: 2625640449004217258}
+  visual: {fileID: 4222580687044619463}
   shadow: {fileID: 3179076949193730200}
   jumpPower: 1.5
   duration: 0.6
@@ -86,7 +118,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.49, z: 0}
-  m_LocalScale: {x: 1, y: 0.303, z: 1}
+  m_LocalScale: {x: 1.6452, y: 0.4984956, z: 1.6452}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7270288059308436409}
@@ -176,10 +208,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1.753756, y: 1.753756, z: 1.753756}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 7270288059308436409}
+  m_Father: {fileID: 4222580687044619463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3014258492219358180
 SpriteRenderer:

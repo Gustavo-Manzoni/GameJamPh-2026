@@ -3,11 +3,27 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.Events;
 using EasyTransition;
+
+public enum CutsceneCharacter
+{
+    None,
+    Pai,
+    Filho
+}
+
+[System.Serializable]
+public class CutsceneLine
+{
+    public CutsceneCharacter character;
+    public AudioClip clip;
+}
+
 public class CutsceneImagesManager : MonoBehaviour
 {
-    [SerializeField]AudioClip[] cutsceneImages;
+    [SerializeField] CutsceneLine[] cutsceneLines;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TMP_Text pressAnyKeyText;
+    [SerializeField] CutsceneCinematicJuice cinematicJuice;
     [SerializeField] UnityEvent onCanStart;
     [SerializeField]DemoLoadScene loadScene;
     [SerializeField] string sceneName;
@@ -16,20 +32,28 @@ public class CutsceneImagesManager : MonoBehaviour
     {
         
         currentIndex = 0;
-        audioSource.clip = cutsceneImages[currentIndex];
-        audioSource.Play();
+        PlayCurrentLine();
     }
     public void Next()
     {
       
           currentIndex++;
-            if (currentIndex >= cutsceneImages.Length)
+            if (currentIndex >= cutsceneLines.Length)
             {
                loadScene.LoadScene(sceneName != string.Empty ? sceneName : UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
                 return;
             }
-            audioSource.clip = cutsceneImages[currentIndex];
-            audioSource.Play();
+            PlayCurrentLine();
+    }
+
+    void PlayCurrentLine()
+    {
+        CutsceneLine line = cutsceneLines[currentIndex];
+        audioSource.clip = line.clip;
+        audioSource.Play();
+
+        if (cinematicJuice != null)
+            cinematicJuice.SetSpeaker(line.character);
     }
     bool hasPressed;
     void Update()
@@ -48,3 +72,4 @@ public class CutsceneImagesManager : MonoBehaviour
         }
     }
 }
+

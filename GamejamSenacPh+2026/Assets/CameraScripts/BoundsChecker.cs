@@ -29,6 +29,7 @@ public class BoundsChecker : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        m_Check = ServiceLocator.Get<PlayerController>().transform;
         m_Map = GetComponent<Map>();
     }
 

@@ -33,9 +33,9 @@ public class Map : MonoBehaviour
     private Vector3 m_CameraSize = Vector3.zero;
 
     /// <summary>
-    /// speed of the movement
+    /// how sharp/snappy the lerp towards the target position is (higher = faster)
     /// </summary>
-    public float m_CameraSpeed = 36.0f;
+    public float m_CameraSpeed = 8.0f;
     /// <summary>
     /// flag for if the camera is moving
     /// if this is true the movement code runs
@@ -46,9 +46,9 @@ public class Map : MonoBehaviour
     /// </summary>
     private DIRECTIONS m_CameraDirection = DIRECTIONS.LEFT;
     /// <summary>
-    /// how far the camera has moved since it was asked
+    /// world position the camera is lerping towards
     /// </summary>
-    private float m_CameraMovedAmount = 0.0f;
+    private Vector3 m_CameraTargetPosition = Vector3.zero;
 
     /// <summary>
     /// The player has hit the edge of the screen
@@ -66,6 +66,16 @@ public class Map : MonoBehaviour
         Time.timeScale = 0.0f;//stop player/AI from moving
         m_CameraDirection = a_Dir;
         m_CameraMoving = true;
+
+        //work out the exact screen-sized offset we want to end up at
+        Vector3 direction = getDirectionFromDirection(a_Dir);
+        Vector3 moveAmount = (int)a_Dir <= 1 ? new Vector3(m_CameraSize.x, 0f, 0f) : new Vector3(0f, m_CameraSize.y, 0f);
+        m_CameraTargetPosition = Camera.main.transform.position + Vector3.Scale(direction, moveAmount);
+
+        //round target off
+        //this will make the camera have 12.5 instead of 12.5201510292
+        m_CameraTargetPosition.x = (float)System.Math.Round(m_CameraTargetPosition.x, 1);
+        m_CameraTargetPosition.y = (float)System.Math.Round(m_CameraTargetPosition.y, 1);
     }
 
     /// <summary>
@@ -82,34 +92,16 @@ public class Map : MonoBehaviour
         //should the camera be moving
         if (m_CameraMoving)
         {
-            //how far the camera should move
-            float dist = m_CameraSpeed * Time.unscaledDeltaTime;
-            //what direction the camera should move
-            Vector3 direction = getDirectionFromDirection(m_CameraDirection);
+            Transform camTransform = Camera.main.transform;
 
-            //total distance/direction the camera is moving
-            direction *= dist;
-            //move camera
-            Camera.main.transform.Translate(direction);
-            //add
-            m_CameraMovedAmount += dist;
+            //framerate-independent exponential smoothing towards the target, feels a lot softer than a fixed-speed translate
+            float t = 1f - Mathf.Exp(-m_CameraSpeed * Time.unscaledDeltaTime);
+            camTransform.position = Vector3.Lerp(camTransform.position, m_CameraTargetPosition, t);
 
-            //if camera movement is left or right
-            if ((int)m_CameraDirection <= 1)
+            //close enough to the target, snap and finish
+            if ((camTransform.position - m_CameraTargetPosition).sqrMagnitude < 0.0004f)
             {
-                //check to see if we have moved the camera far enough
-                if (m_CameraMovedAmount > Mathf.Abs(m_CameraSize.x))
-                {
-                    //reset it
-                    resetCameraMoving();
-                }
-            }
-            else
-            { // camera movement is up or down
-                if (m_CameraMovedAmount > Mathf.Abs(m_CameraSize.y))
-                {
-                    resetCameraMoving();
-                }
+                resetCameraMoving();
             }
         }
     }
@@ -139,54 +131,15 @@ public class Map : MonoBehaviour
     }
 
     /// <summary>
-    /// works out difference between how far the camera has overshot the position we want
-    /// this is good for minor fixes are slow speeds(not common), and makes quick speeds possible (very common)
+    /// snaps the camera to the target position and re-enables player/AI movement
     /// </summary>
     private void resetCameraMoving()
     {
-
-        //get opposite direction since we want to move the way we came
-        Vector3 direction = getDirectionFromDirection(m_CameraDirection);
-        direction *= -1; //flip direction
-
-        Vector3 cameraSize = m_CameraSize;
-
-        //remove the other directions data
-        // EG. if we move left, this will remove up/down's data from cameraSize
-        if ((int)m_CameraDirection <= 1)
-        {
-            cameraSize.y = 0;
-        }
-        else
-        {
-            cameraSize.x = 0;
-        }
-
-        //get how far we should move
-        Vector3 offset;
-        if (m_CameraDirection == DIRECTIONS.RIGHT || m_CameraDirection == DIRECTIONS.UP)
-        {
-            offset = (direction * m_CameraMovedAmount) + cameraSize;
-        }
-        else
-        {
-            offset = (direction * m_CameraMovedAmount) - cameraSize;
-        }
-
-        //final location of camera
-        Vector3 camPos = Camera.main.transform.position + offset;
-
-        //round camera position off
-        //this will make the camera have 12.5 instead of 12.5201510292
-        camPos.x = (float)System.Math.Round(camPos.x, 1);
-        camPos.y = (float)System.Math.Round(camPos.y, 1);
-
-        //set camera pos
-        Camera.main.transform.position = camPos;
+        //snap to the exact target so we don't drift due to the lerp threshold
+        Camera.main.transform.position = m_CameraTargetPosition;
 
         //reset set script
         m_CameraMoving = false;
-        m_CameraMovedAmount = 0.0f;
 
         updateBounds();
 

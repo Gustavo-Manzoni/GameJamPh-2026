@@ -38,6 +38,8 @@ public class DeliveryArea : MonoBehaviour
 
     private IEnumerator DeliverSequence(List<FollowerPerson> followers)
     {
+        if(followers.Count == 0) yield break;
+         ServiceLocator.Get<SoundManager>().Play(SFX.GreenCircle);
         for (int i = 0; i < followers.Count; i++)
         {
             Vector2 point = GetRandomPointInArea();
