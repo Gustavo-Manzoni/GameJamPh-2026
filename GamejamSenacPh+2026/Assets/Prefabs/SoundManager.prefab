@@ -160,3 +160,62 @@ MonoBehaviour:
     minDistance: 20
     maxDistance: 20
     rolloffMode: 2
+  - sound: 19
+    clips:
+    - {fileID: 8300000, guid: 3a4eb617db3b3434d90e2c9ed6d2a6ec, type: 3}
+    volume: 0.7
+    poolSize: 4
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2
+  - sound: 20
+    clips:
+    - {fileID: 8300000, guid: 5549f7f7eddc42f4da5ddd33af1988ec, type: 3}
+    - {fileID: 8300000, guid: 3b75bd08c24fd4849964bed45f2f3b37, type: 3}
+    - {fileID: 8300000, guid: 9cc401d3d6293f3479959666ded42769, type: 3}
+    - {fileID: 8300000, guid: 599963811c901514daba23a8619811d2, type: 3}
+    volume: 0.7
+    poolSize: 9
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2
+  - sound: 21
+    clips:
+    - {fileID: 8300000, guid: e6d5ad7e3da9dfb4a9debfb5198943a4, type: 3}
+    volume: 0.7
+    poolSize: 9
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2
+  - sound: 22
+    clips:
+    - {fileID: 8300000, guid: 1e7f374af20a5984da0719bfa2b6348d, type: 3}
+    volume: 0.7
+    poolSize: 9
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2

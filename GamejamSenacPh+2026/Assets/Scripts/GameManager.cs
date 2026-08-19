@@ -55,12 +55,14 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         StartCoroutine(WinCoroutine());
+       
         
     }
     public void Lose()
     {
             isLoosing = true;
             losePanel.gameObject.SetActive(true);
+             ServiceLocator.Get<SoundManager>().Play(SFX.Derrota);
             losePanel.DOFade(1, losePanelFadeDuration).OnComplete(() =>
             {
              

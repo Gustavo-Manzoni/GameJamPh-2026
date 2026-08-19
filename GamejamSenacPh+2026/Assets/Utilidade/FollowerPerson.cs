@@ -152,7 +152,7 @@ public class FollowerPerson : MonoBehaviour
     public void ReleaseFromChain(Vector2 threatPosition)
     {
         ReleaseFromChain();
-
+        ServiceLocator.Get<SoundManager>().Play(SFX.Grunhidos);
         Vector2 awayFromThreat = (Vector2)transform.position - threatPosition;
         if (Mathf.Abs(awayFromThreat.x) > 0.01f)
             facingTargetY = awayFromThreat.x > 0f ? 0f : 180f;

@@ -20,17 +20,17 @@ public class TalkManager : MonoBehaviour
         ServiceLocator.Register(this);
     }
 
-    public void ShowPositive(Vector3 position) => ShowPopup(position, positivePhrases, positiveColor);
+    public void ShowPositive(Vector3 position) => ShowPopup(position, positivePhrases, positiveColor, true);
 
-    public void ShowNegative(Vector3 position) => ShowPopup(position, negativePhrases, negativeColor);
+    public void ShowNegative(Vector3 position) => ShowPopup(position, negativePhrases, negativeColor, false);
 
-    private void ShowPopup(Vector3 position, string[] phrases, Color color)
+    private void ShowPopup(Vector3 position, string[] phrases, Color color, bool isPositive)
     {
         if (talkPopupPrefab == null || phrases == null || phrases.Length == 0) return;
 
         string phrase = phrases[Random.Range(0, phrases.Length)];
         TalkPopup popup = Instantiate(talkPopupPrefab, position + popupOffset, Quaternion.identity);
         popup.transform.SetParent(transform);
-        popup.Show(phrase, color);
+        popup.Show(phrase, color, isPositive);
     }
 }

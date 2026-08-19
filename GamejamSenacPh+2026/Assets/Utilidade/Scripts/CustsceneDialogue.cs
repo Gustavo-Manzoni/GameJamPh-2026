@@ -61,8 +61,8 @@ public class CutsceneDialogue : MonoBehaviour
 
     private void Start()
     {
-        if (lines != null && lines.Length > 0)
-            StartCutscene();
+        // if (lines != null && lines.Length > 0)
+        //     StartCutscene();
     }
 
     private void Update()

@@ -11,8 +11,9 @@ public class TalkPopup : MonoBehaviour
     [SerializeField] private float holdDuration = 0.8f;
     [SerializeField] private float fadeDuration = 0.4f;
     [SerializeField] private Ease popEase = Ease.OutBack;
+    [SerializeField] GameObject niceFace, badFace;
 
-    public void Show(string message, Color color)
+    public void Show(string message, Color color, bool isPositive)
     {
         if (text != null)
         {
@@ -22,7 +23,8 @@ public class TalkPopup : MonoBehaviour
 
         transform.localScale = Vector3.zero;
         if (canvasGroup != null) canvasGroup.alpha = 1f;
-
+        if(isPositive){niceFace.SetActive(true); badFace.SetActive(false);}
+        else{niceFace.SetActive(false); badFace.SetActive(true);}
         float totalFloatDuration = popDuration + holdDuration + fadeDuration;
         Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOScale(1f, popDuration).SetEase(popEase));

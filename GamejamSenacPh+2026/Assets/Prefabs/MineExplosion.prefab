@@ -1,0 +1,290 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &785464583136472826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7251726916747996582}
+  m_Layer: 0
+  m_Name: MineExplosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7251726916747996582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785464583136472826}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.20115179, w: 0.97956014}
+  m_LocalPosition: {x: -11.011824, y: -2.889961, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5344550455123296143}
+  - {fileID: 5972157733305283251}
+  - {fileID: 6253950914885335075}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4617862642653062194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7251726916747996582}
+    m_Modifications:
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.sprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fba42a776ee2b71418594577e7f73350, type: 3}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 23.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525229088157350756, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_Name
+      value: Mine Explosion (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+--- !u!4 &5972157733305283251 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+  m_PrefabInstance: {fileID: 4617862642653062194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4917600332078034594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7251726916747996582}
+    m_Modifications:
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.sprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 872b6daef70f19d41b893020f8e7b1ef, type: 3}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 23.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525229088157350756, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_Name
+      value: Mine Explosion (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+--- !u!4 &6253950914885335075 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+  m_PrefabInstance: {fileID: 4917600332078034594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6403841700185516302
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7251726916747996582}
+    m_Modifications:
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: UVModule.sprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153591445314775345, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 23.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525229088157350756, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+      propertyPath: m_Name
+      value: Mine Explosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+--- !u!4 &5344550455123296143 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1365906022583146113, guid: 3d3b96254fbb83b46bf8fe381d2ad647, type: 3}
+  m_PrefabInstance: {fileID: 6403841700185516302}
+  m_PrefabAsset: {fileID: 0}
