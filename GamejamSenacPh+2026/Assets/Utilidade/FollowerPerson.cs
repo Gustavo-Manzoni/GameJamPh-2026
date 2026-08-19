@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(PositionRecorder))]
 public class FollowerPerson : MonoBehaviour
 {
-    private enum State { Idle, Following }
+    private enum State { Idle, Following, Delivered }
 
     [SerializeField] private float positionStiffness = 140f;
     [SerializeField] private float positionDamping = 16f;
@@ -13,6 +13,7 @@ public class FollowerPerson : MonoBehaviour
     [SerializeField] private SquashStretch squashStretch;
     [SerializeField] private Transform visual;
     [SerializeField] private Vector2 joinSquashScale = new Vector2(1.5f, 0.4f);
+    [SerializeField] private Vector2 deliverSquashScale = new Vector2(1.3f, 0.6f);
     [SerializeField] private float walkBobAmplitude = 0.05f;
     [SerializeField] private float walkBobFrequency = 8f;
     [SerializeField] private float idleBreathAmplitude = 0.025f;
@@ -66,11 +67,12 @@ public class FollowerPerson : MonoBehaviour
     public PositionRecorder Recorder => recorder;
     public bool IsIdle => state == State.Idle;
     FeedbackManager feedbackManager;
-    [SerializeField]ParticleSystem dustParticles;
-    [SerializeField] Fire myChimney;
-    [SerializeField] float chimneyCheckInterval = 3;
+    [SerializeField] ParticleSystem dustParticles;
     GameManager _gameManager;
-    
+
+    public event System.Action OnConverted;
+    public event System.Action OnUnconverted;
+
     private void Awake()
     {
         recorder = GetComponent<PositionRecorder>();
@@ -90,13 +92,15 @@ public class FollowerPerson : MonoBehaviour
 
         lastFacingTargetY = facingTargetY;
     }
-    
+
     void Start()
     {
         feedbackManager = ServiceLocator.Get<FeedbackManager>();
         _gameManager = ServiceLocator.Get<GameManager>();
         _gameManager.IncreasePollution(_gameManager.NormalPersonPollution);
+    
     }
+
     public void JoinChain(PositionRecorder newTarget, float distanceBack)
     {
         target = newTarget;
@@ -110,13 +114,16 @@ public class FollowerPerson : MonoBehaviour
         if (angryFace != null) angryFace.SetActive(false);
         if (happyFace != null) happyFace.SetActive(true);
         StartCoroutine(PlayDustParticles());
+        OnConverted?.Invoke();
+        TalkManager.Instance?.ShowPositive(transform.position);
     }
+
     IEnumerator PlayDustParticles()
     {
         yield return new WaitForSeconds(0.5f);
-       
-            dustParticles.Play();
-     
+
+        dustParticles.Play();
+
     }
     public void SetTarget(PositionRecorder newTarget, float distanceBack)
     {
@@ -126,13 +133,20 @@ public class FollowerPerson : MonoBehaviour
 
     public void ReleaseFromChain()
     {
+        bool wasConverted = state == State.Following;
         target = null;
         state = State.Idle;
-            _gameManager.IncreasePollution(_gameManager.NormalPersonPollution);
+        _gameManager.IncreasePollution(_gameManager.NormalPersonPollution);
         throwTimer = Random.Range(throwIntervalMin, throwIntervalMax);
 
         if (angryFace != null) angryFace.SetActive(true);
         if (happyFace != null) happyFace.SetActive(false);
+
+        if (wasConverted)
+        {
+            OnUnconverted?.Invoke();
+            TalkManager.Instance?.ShowNegative(transform.position);
+        }
     }
     public void ReleaseFromChain(Vector2 threatPosition)
     {
@@ -142,7 +156,7 @@ public class FollowerPerson : MonoBehaviour
         if (Mathf.Abs(awayFromThreat.x) > 0.01f)
             facingTargetY = awayFromThreat.x > 0f ? 0f : 180f;
 
-        
+
         if (squashStretch != null)
             squashStretch.Kick(new Vector2(-0.32f, 0.42f));
 
@@ -151,24 +165,34 @@ public class FollowerPerson : MonoBehaviour
         headSwaySpring.velocity += 110f * swayDirection;
     }
 
-    private void Update()
-    {   if(state != State.Idle)
-        FollowTarget();
-        if (state == State.Idle)
-        {
-            IdleBreath();
-            ApplyFacing();
-            UpdateThrowTimer();
-            UpdateBodySway(0f);
+    public void Deliver()
+    {
+        target = null;
+        state = State.Delivered;
 
-            if (animator != null)
-                animator.SetBool("IsWalking", false);
-    
+        if (squashStretch != null)
+            squashStretch.SnapTo(deliverSquashScale);
+    }
+
+    private void Update()
+    {
+        if (state == State.Following)
+        {
+            FollowTarget();
             return;
         }
 
+        IdleBreath();
+        ApplyFacing();
+        UpdateBodySway(0f);
+
+        if (animator != null)
+            animator.SetBool("IsWalking", false);
+
+        if (state == State.Idle)
+            UpdateThrowTimer();
     }
-    
+
     private void UpdateThrowTimer()
     {
         throwTimer -= Time.deltaTime;

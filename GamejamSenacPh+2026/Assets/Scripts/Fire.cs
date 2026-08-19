@@ -66,6 +66,8 @@ public class Fire : MonoBehaviour, IFireable
     public PositionRecorder Recorder { get => recorder; set => recorder = value; }
     GameManager _gameManager;
 
+    public event System.Action OnChimneyDestroyed;
+
     void Awake()
     {
         health.OnDie += Die;
@@ -195,7 +197,7 @@ public class Fire : MonoBehaviour, IFireable
         isDying = true;
         _gameManager.IncreasePollution(-_gameManager.NormalFurnacePollution);
         fireGameObject.transform.DOScale(0, fireDieDuration).SetEase(fireDieEase).OnComplete(() => Destroy(fireGameObject));
-        
+        OnChimneyDestroyed?.Invoke();
     }
    
 }

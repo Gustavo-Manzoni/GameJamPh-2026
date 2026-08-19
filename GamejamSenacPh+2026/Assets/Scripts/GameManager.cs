@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     bool isLoosing;
     public float NormalPersonPollution { get => normalPersonPollution; set => normalPersonPollution = value; }
     public float NormalFurnacePollution { get => normalFurnacePollution; set => normalFurnacePollution = value; }
+    public float PollutionIncreaseRatePerSecond { get => pollutionIncreaseRatePerSecond; set => pollutionIncreaseRatePerSecond = value; }
 
     void Awake()
     {
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     }
     public void IncreasePollution(float amount)
     {
-        pollutionIncreaseRatePerSecond += amount;
+        PollutionIncreaseRatePerSecond += amount;
         
     }
     IEnumerator WinCoroutine()
@@ -63,9 +64,9 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= pollutionAttRate)
         {
-            pollution += pollutionIncreaseRatePerSecond * pollutionAttRate;
+            pollution += PollutionIncreaseRatePerSecond * pollutionAttRate;
             barImage.fillAmount = pollution / maxPollution;
-            ratePerSecondText.text = pollutionIncreaseRatePerSecond + "/s";
+            ratePerSecondText.text = PollutionIncreaseRatePerSecond + "/s";
             timer = 0;
             if (pollution >= maxPollution)
             {

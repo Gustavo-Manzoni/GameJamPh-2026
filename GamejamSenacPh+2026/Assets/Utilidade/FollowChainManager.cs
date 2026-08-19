@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,10 +6,11 @@ public class FollowChainManager : MonoBehaviour
 {
     public static FollowChainManager Instance { get; private set; }
 
-
     [SerializeField] private PositionRecorder playerRecorder;
     [SerializeField] private float spacing = 0.6f;
     [SerializeField] private float shakeOnJoin = 0.12f;
+    [SerializeField] private float shakeOnRelease = 0.1f;
+    [SerializeField] private float releaseStagger = 0.15f;
 
     private readonly List<FollowerPerson> chain = new List<FollowerPerson>();
     private readonly List<Transform> transformsBuffer = new List<Transform>();
@@ -20,7 +22,6 @@ public class FollowChainManager : MonoBehaviour
     public int ChainCount => chain.Count;
 
     public int MaxChainCount { get => maxChainCount; set => maxChainCount = value; }
-
 
     private void Awake()
     {
@@ -61,20 +62,40 @@ public class FollowChainManager : MonoBehaviour
         }
     }
 
-  
     public bool ReleaseFromFollowerAndBehind(FollowerPerson person, Vector2 threatPosition)
     {
         int firstReleasedIndex = chain.IndexOf(person);
         if (firstReleasedIndex < 0) return false;
 
-        for (int i = firstReleasedIndex; i < chain.Count; i++)
-            chain[i].ReleaseFromChain(threatPosition);
-
+        List<FollowerPerson> released = chain.GetRange(firstReleasedIndex, chain.Count - firstReleasedIndex);
         chain.RemoveRange(firstReleasedIndex, chain.Count - firstReleasedIndex);
+
+        StartCoroutine(ReleaseSequence(released, threatPosition));
         return true;
     }
 
-      public IReadOnlyList<Transform> GetChainTransforms(Transform player)
+    private IEnumerator ReleaseSequence(List<FollowerPerson> released, Vector2 threatPosition)
+    {
+        for (int i = 0; i < released.Count; i++)
+        {
+            released[i].ReleaseFromChain(threatPosition);
+
+            if (shakeOnRelease > 0f)
+                CameraShake.Instance?.AddTrauma(shakeOnRelease);
+
+            if (i < released.Count - 1)
+                yield return new WaitForSeconds(releaseStagger);
+        }
+    }
+
+    public List<FollowerPerson> ClearAllFollowers()
+    {
+        List<FollowerPerson> released = new List<FollowerPerson>(chain);
+        chain.Clear();
+        return released;
+    }
+
+    public IReadOnlyList<Transform> GetChainTransforms(Transform player)
     {
         transformsBuffer.Clear();
         if (player != null) transformsBuffer.Add(player);
