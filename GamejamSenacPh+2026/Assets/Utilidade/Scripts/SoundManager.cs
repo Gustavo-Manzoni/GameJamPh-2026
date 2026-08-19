@@ -5,15 +5,17 @@ using UnityEngine.Audio;
 
 public enum SFX
 {
-    ButtonHover, ButtonClick, ButtonUnhover,
-    CardHover, CardUnhover, BatataDoce, JogoComecar, PassoNeutro, SomEscriva
+    ButtonHover, ButtonClick, ButtonUnhover, CollectPerson, HitChamine,
+    CardHover, CardUnhover, BatataDoce, JogoComecar, PassoNeutro, SomEscriva, SomFabrica1, SomFabrica2, SomFabrica3, SomFabrica4, PaperBomb1, PaperBomb2, PaperThrow, PaperHitGround
 }
 
 [System.Serializable]
 public class SoundConfig
 {
     public SFX sound;
-    public AudioClip clip;
+    public List<AudioClip> clips;
+
+   
 
     [Range(0f, 1f)]
     public float volume = 1f;
@@ -23,6 +25,21 @@ public class SoundConfig
 
     [Range(0f, 0.5f)]
     public float pitchVariation = 0.1f;
+
+    [Header("Audio Espacial 3D")]
+    public bool spatialAudio3D = false;
+    public float dopplerLevel = 1f;
+    [Range(0f, 360f)]
+    public float spread = 0f;
+    public float minDistance = 1f;
+    public float maxDistance = 500f;
+    public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
+
+    public AudioClip GetRandomClip()
+    {
+        if (clips == null || clips.Count == 0) return null;
+        return clips[Random.Range(0, clips.Count)];
+    }
 }
 
 public class SoundManager : MonoBehaviour
@@ -71,12 +88,23 @@ public class SoundManager : MonoBehaviour
         go.transform.SetParent(transform);
 
         var src = go.AddComponent<AudioSource>();
-        src.clip = config.clip;
         src.volume = config.volume;
         src.outputAudioMixerGroup = config.mixerGroup;
         src.playOnAwake = false;
 
+        ApplySpatialSettings(src, config);
+
         return src;
+    }
+
+    private void ApplySpatialSettings(AudioSource src, SoundConfig config)
+    {
+        src.spatialBlend = config.spatialAudio3D ? 1f : 0f;
+        src.dopplerLevel = config.dopplerLevel;
+        src.spread = config.spread;
+        src.minDistance = config.minDistance;
+        src.maxDistance = config.maxDistance;
+        src.rolloffMode = config.rolloffMode;
     }
 
     public void Play(SFX sound)
@@ -88,6 +116,9 @@ public class SoundManager : MonoBehaviour
 
         var config = _configs[sound];
         var source = queue.Dequeue();
+
+        source.clip = config.GetRandomClip();
+        if (source.clip == null) return;
 
         source.pitch = config.randomPitch
             ? 1f + Random.Range(-config.pitchVariation, config.pitchVariation)
@@ -108,6 +139,9 @@ public class SoundManager : MonoBehaviour
 
         var config = _configs[sound];
         var source = queue.Dequeue();
+
+        source.clip = config.GetRandomClip();
+        if (source.clip == null) return;
 
         source.transform.position = position;
         source.spatialBlend = 1f;
@@ -137,7 +171,7 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(source.clip.length / source.pitch);
 
         source.Stop();
-        source.spatialBlend = 0f;
+        ApplySpatialSettings(source, _configs[sound]);
         source.transform.position = transform.position;
 
         _pool[sound].Enqueue(source);

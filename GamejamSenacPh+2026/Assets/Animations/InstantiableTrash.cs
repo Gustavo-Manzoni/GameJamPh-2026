@@ -63,5 +63,7 @@ public class InstantiableTrash : MonoBehaviour
 
         if (visual != null)
             visual.DOPunchScale(landPunch, 0.35f, 8, 0.8f);
+
+            ServiceLocator.Get<SoundManager>().PlayAt(SFX.PaperHitGround, transform.position);
     }
 }

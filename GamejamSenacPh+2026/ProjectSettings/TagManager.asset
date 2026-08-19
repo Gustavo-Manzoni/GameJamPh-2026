@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Camera2
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 348699843
+    locked: 0
+  - name: UI
+    uniqueID: 4243840495
     locked: 0
   m_RenderingLayers:
   - Default

@@ -103,7 +103,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -141,7 +141,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -208,12 +208,12 @@ TextureImporter:
       name: smoke chamine_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 220
-        width: 21
-        height: 22
+        x: 0
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -230,12 +230,12 @@ TextureImporter:
       name: smoke chamine_1
       rect:
         serializedVersion: 2
-        x: 290
-        y: 232
-        width: 14
-        height: 10
+        x: 215
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -252,12 +252,12 @@ TextureImporter:
       name: smoke chamine_2
       rect:
         serializedVersion: 2
-        x: 325
-        y: 225
-        width: 26
-        height: 16
+        x: 430
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -274,12 +274,12 @@ TextureImporter:
       name: smoke chamine_3
       rect:
         serializedVersion: 2
-        x: 511
-        y: 236
-        width: 7
-        height: 6
+        x: 645
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: smoke chamine_4
       rect:
         serializedVersion: 2
-        x: 523
-        y: 229
-        width: 29
-        height: 13
+        x: 860
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -318,12 +318,12 @@ TextureImporter:
       name: smoke chamine_5
       rect:
         serializedVersion: 2
-        x: 732
-        y: 232
-        width: 19
-        height: 10
+        x: 1075
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -340,12 +340,12 @@ TextureImporter:
       name: smoke chamine_6
       rect:
         serializedVersion: 2
-        x: 930
-        y: 234
-        width: 9
-        height: 8
+        x: 1290
+        y: 0
+        width: 215
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -358,363 +358,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: smoke chamine_7
-      rect:
-        serializedVersion: 2
-        x: 1142
-        y: 224
-        width: 8
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6b56d0d2c02d0e10800000000000000
-      internalID: 2165423016934529899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_8
-      rect:
-        serializedVersion: 2
-        x: 1334
-        y: 232
-        width: 14
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c9d2a0f36f3fd320800000000000000
-      internalID: 2584854409605470657
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_9
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 39
-        width: 126
-        height: 187
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93bdc6eb9e40b8f10800000000000000
-      internalID: 2272915838907243321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_10
-      rect:
-        serializedVersion: 2
-        x: 485
-        y: 39
-        width: 117
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a3cec8e5a94bce180800000000000000
-      internalID: -9084687773208875974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_11
-      rect:
-        serializedVersion: 2
-        x: 697
-        y: 39
-        width: 109
-        height: 194
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db783b31ff713e7f0800000000000000
-      internalID: -584597142313400387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_12
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 39
-        width: 103
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8dfbce7f139afc520800000000000000
-      internalID: 2724582331660419032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_13
-      rect:
-        serializedVersion: 2
-        x: 949
-        y: 219
-        width: 20
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 41d98344cfec69220800000000000000
-      internalID: 2492407026667789588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_14
-      rect:
-        serializedVersion: 2
-        x: 1105
-        y: 39
-        width: 104
-        height: 188
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fef05a3393a4c1a30800000000000000
-      internalID: 4187303363087765487
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_15
-      rect:
-        serializedVersion: 2
-        x: 1163
-        y: 223
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b8f3902704cce600800000000000000
-      internalID: 498989193621665976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_16
-      rect:
-        serializedVersion: 2
-        x: 1389
-        y: 226
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31bf79d2b0f5c2fa0800000000000000
-      internalID: -5824175716482680045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_17
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 39
-        width: 115
-        height: 185
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 70cdc2726cfa58300800000000000000
-      internalID: 253802219611937799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_18
-      rect:
-        serializedVersion: 2
-        x: 1331
-        y: 39
-        width: 99
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c9b12aa1891086a0800000000000000
-      internalID: -6449126621698737722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_19
-      rect:
-        serializedVersion: 2
-        x: 1338
-        y: 212
-        width: 14
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d53e5e1cdc50127d0800000000000000
-      internalID: -2945066300044090531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_20
-      rect:
-        serializedVersion: 2
-        x: 1414
-        y: 212
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 999b48ed6737ec230800000000000000
-      internalID: 3660990501475367321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_21
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 196
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef5b16149016824f0800000000000000
-      internalID: -853325437007186434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smoke chamine_22
-      rect:
-        serializedVersion: 2
-        x: 1312
-        y: 197
-        width: 6
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fac1491b4eaeb8aa0800000000000000
-      internalID: -6157569797546304337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5451cc5b8e740294eb58f3d74209511d
     internalID: 0
     vertices: []
     indices: 
@@ -722,31 +370,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":1.0},"gridSpriteSize":{"x":215.0,"y":262.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       smoke chamine_0: 3153148392749893370
       smoke chamine_1: 3810571961976380209
-      smoke chamine_10: -9084687773208875974
-      smoke chamine_11: -584597142313400387
-      smoke chamine_12: 2724582331660419032
-      smoke chamine_13: 2492407026667789588
-      smoke chamine_14: 4187303363087765487
-      smoke chamine_15: 498989193621665976
-      smoke chamine_16: -5824175716482680045
-      smoke chamine_17: 253802219611937799
-      smoke chamine_18: -6449126621698737722
-      smoke chamine_19: -2945066300044090531
       smoke chamine_2: -5638956004446162287
-      smoke chamine_20: 3660990501475367321
-      smoke chamine_21: -853325437007186434
-      smoke chamine_22: -6157569797546304337
       smoke chamine_3: -218346210553312542
       smoke chamine_4: 1942141812116883841
       smoke chamine_5: 8972643635697250913
       smoke chamine_6: -1045262493942386934
-      smoke chamine_7: 2165423016934529899
-      smoke chamine_8: 2584854409605470657
-      smoke chamine_9: 2272915838907243321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

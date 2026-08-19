@@ -19,7 +19,7 @@ public class WinOnCollide : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {   
-            if(_followChainManager.ChainCount < _followChainManager.MaxChainCount)
+            if(_gameManager.PollutionIncreaseRatePerSecond != 0)
             {
                 return;
             }

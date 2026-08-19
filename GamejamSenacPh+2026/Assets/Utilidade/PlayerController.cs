@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
         if(!canMove)
         {
             input = Vector2.zero;
-            anim.SetBool("isWalking", false);
+            anim.SetBool("IsWalking", false);
         }
         else
         {
@@ -148,11 +148,11 @@ public class PlayerController : MonoBehaviour
             input = Vector2.ClampMagnitude(input, 1f);
             if(input.magnitude > 0.1f)
             {
-                anim.SetBool("isWalking", true);
+                anim.SetBool("IsWalking", true);
             }
             else
             {
-                anim.SetBool("isWalking", false);
+                anim.SetBool("IsWalking", false);
             }
         }
 
