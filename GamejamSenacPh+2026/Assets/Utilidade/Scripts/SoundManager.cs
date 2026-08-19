@@ -7,7 +7,7 @@ public enum SFX
 {
     ButtonHover, ButtonClick, ButtonUnhover, CollectPerson, HitChamine,
     CardHover, CardUnhover, BatataDoce, JogoComecar, PassoNeutro, SomEscriva, SomFabrica1, SomFabrica2, SomFabrica3, SomFabrica4, PaperBomb1, PaperBomb2, PaperThrow, PaperHitGround,
-    Derrota, Grunhidos, Pop, Heal, GreenCircle, Tick
+    Derrota, Grunhidos, Pop, Heal, GreenCircle, Tick, Footstep
 }
 
 [System.Serializable]

@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
     private Quaternion leftFootBaseRotation;
     private Quaternion rightFootBaseRotation;
     [SerializeField] Animator anim;
+
+    private float lastFootstepPhase;
    
 
     private void Awake()
@@ -253,10 +255,18 @@ public class PlayerController : MonoBehaviour
             bobTimer += Time.deltaTime * bobFrequency * (speed / maxSpeed);
             float bob = Mathf.Abs(Mathf.Sin(bobTimer)) * bobAmplitude;
             visual.localPosition = visualBaseLocalPosition + Vector3.up * bob;
+
+            float bobSin = Mathf.Sin(bobTimer);
+            if (Mathf.Sign(bobSin) != Mathf.Sign(lastFootstepPhase) && Mathf.Abs(bobSin) > 0.01f)
+            {
+                ServiceLocator.Get<SoundManager>().Play(SFX.Footstep);
+            }
+            lastFootstepPhase = bobSin;
         }
         else
         {
             bobTimer = 0f;
+            lastFootstepPhase = 0f;
             float idleBob = Mathf.Sin(Time.time * idleBreathSpeed) * idleBreathAmplitude;
             visual.localPosition = visualBaseLocalPosition + Vector3.up * idleBob;
         }
