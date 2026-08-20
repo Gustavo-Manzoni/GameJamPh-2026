@@ -280,17 +280,17 @@ MonoBehaviour:
   textComponent: {fileID: 412969058}
   continuePrompt: {fileID: 1098222589}
   lines:
-  - ... Meu filho...(chorando) olha como estou, deploravel. Mais tudo bem apenas
-    nao... Nao seja como eles meu filho nunca!
-  - ' Nunca deixe lixos no chao a poluicao nos prejudica de maneiras muito diferentes
-    alem de machucar. Prometa me que vai lutar contra essa realidade!....'
+  - "... Meu filho...(chorando) olha como estou, deplor\xE1vel. Mais tudo bem, apenas
+    n\xE3o... N\xE3o seja como eles meu filho nunca!"
+  - " Nunca deixe lixos no ch\xE3o a polui\xE7\xE3o nos prejudica de maneiras muito
+    diferentes al\xE9m de machucar. Prometa-me que vai lutar contra essa realidade!...."
   - <wave=1>Que ....</wave>  <shake=1>que..? pai?...</shake> Droga mais um sonho
     do velho.
-  - "Melhor eu me levantar, to come\xE7ando a pirar ja. Isso nunca acaba! Calma vai
-    da certo, at\xE9 pq uma promessa \xE9 uma promessa."
-  - "Essa cidade... Nao! Esse planeta, esta todo tomado por lixo e polui\xE7\xE3o,
-    se nao agir e convencer eles que isso \xE9 errado ent\xE3o"
-  - Nao posso mais ser considerado como o filho dele. Ta na hora da limpeza !
+  - "Melhor eu me levantar, to come\xE7ando a pirar j\xE1. Isso nunca acaba! Calma
+    vai da certo, at\xE9 porque uma promessa \xE9 uma promessa."
+  - "Essa cidade... N\xE3o! Esse planeta, est\xE1 todo tomado por lixo e polui\xE7\xE3o,
+    se n\xE3o agir e convencer eles que isso \xE9 errado ent\xE3o"
+  - "N\xE3o posso mais ser considerado como o filho dele. Ta na hora da limpeza !"
   typingSpeed: 0.12
   allowSkipTyping: 0
   scaleInOnAppear: 1
