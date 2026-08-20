@@ -549,6 +549,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSetup
       objectReference: {fileID: 0}
+    - target: {fileID: 1185409469247359662, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
+      propertyPath: playerRecorder
+      value: 
+      objectReference: {fileID: 740343511}
     - target: {fileID: 1240315458188169177, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.89
@@ -1338,6 +1342,17 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740343507}
   m_Enabled: 1
+--- !u!114 &740343511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8683682193373468585, guid: 17f2166d275843f4db6ce6255a74715b, type: 3}
+  m_PrefabInstance: {fileID: 740343506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740343507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f5da4ed34e4f945abe5de5b0e4f220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PositionRecorder
 --- !u!1 &876936292
 GameObject:
   m_ObjectHideFlags: 0
