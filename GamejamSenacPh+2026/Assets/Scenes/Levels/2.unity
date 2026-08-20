@@ -171,11 +171,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4827983656458722140, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6356110238722758517, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7236613536362528194, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7620435336492233321, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131009463951162985, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
