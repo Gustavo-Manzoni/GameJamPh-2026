@@ -290,8 +290,6 @@ MonoBehaviour:
     da certo, at\xE9 pq uma promessa \xE9 uma promessa."
   - "Essa cidade... nao! Esse planeta, esta todo tomado por lixo e polui\xE7\xE3o,
     se nao agir e convencer eles que isso \xE9 errado ent\xE3o"
-  - "Essa cidade... nao! Esse planeta, esta todo tomado por lixo e polui\xE7\xE3o,
-    se nao agir e convencer eles que isso \xE9 errado ent\xE3o"
   - nao posso mais ser considerado como o filho dele. Ta na hora da limpeza !
   typingSpeed: 0.026
   allowSkipTyping: 0
@@ -1449,7 +1447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.523}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 258, y: 188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1144628037
