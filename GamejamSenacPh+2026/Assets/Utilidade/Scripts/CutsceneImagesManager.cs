@@ -28,6 +28,7 @@ public class CutsceneImagesManager : MonoBehaviour
     [SerializeField]DemoLoadScene loadScene;
     [SerializeField] string sceneName;
     int currentIndex;
+    bool isFirstTime = true;
     void Start()
     {
         
@@ -35,7 +36,10 @@ public class CutsceneImagesManager : MonoBehaviour
     public void Next()
     {
       
-          currentIndex++;
+      if(isFirstTime) {isFirstTime= false;return;}
+   
+      
+        
             if (currentIndex >= cutsceneLines.Length)
             {
                loadScene.LoadScene(sceneName != string.Empty ? sceneName : UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
@@ -56,6 +60,7 @@ public class CutsceneImagesManager : MonoBehaviour
     bool hasPressed;
     void Update()
     {
+        print(currentIndex);
 
        if(hasPressed) return;
         foreach(var key in System.Enum.GetValues(typeof(KeyCode)))

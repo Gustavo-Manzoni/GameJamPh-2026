@@ -14,7 +14,7 @@ public class RobotPatrol : MonoBehaviour
     [SerializeField, Min(0f)] private float cornerPause = 0.12f;
     [SerializeField, Min(0.001f)] private float waypointTolerance = 0.02f;
 
-    [Header("Visual setup")]
+   
     [SerializeField] private Transform visual;
     [SerializeField] private Transform hipsPivot;
     [SerializeField] private Transform headPivot;
@@ -24,7 +24,7 @@ public class RobotPatrol : MonoBehaviour
     [SerializeField] private Transform legPivot;
     [SerializeField] private SquashStretch squashStretch;
 
-    [Header("Visual feel")]
+   
     [SerializeField] private float bobAmplitude = 0.045f;
     [SerializeField] private float bobFrequency = 9f;
     [SerializeField] private float leanAngle = 10f;
