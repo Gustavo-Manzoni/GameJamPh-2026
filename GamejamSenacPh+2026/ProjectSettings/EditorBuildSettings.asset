@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuTemplate.unity
     guid: f715fe6b436276b40a15a9db71d8ff0e
   - enabled: 1
-    path: Assets/Scenes/ChainChain.unity
-    guid: d75687d82bad9e74c993b8f10f5b4942
-  - enabled: 1
     path: Assets/Scenes/CutsceneTest.unity
     guid: f10947d190643b940ac6c85f2960c43c
   - enabled: 1
@@ -29,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/5.unity
     guid: 928d3f73f9e0ccb469da9790d1c9bd64
+  - enabled: 1
+    path: Assets/Scenes/Levels/6.unity
+    guid: 69a760a4a9fcacd438d87886aeb9c456
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

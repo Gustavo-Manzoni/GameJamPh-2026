@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,20 @@ public class CutsceneCinematicJuice : MonoBehaviour
     [SerializeField] Image topBar;
     [SerializeField] Image bottomBar;
 
-    [Header("Personagem 1")]
+   
     [SerializeField] Image characterImage;
     [SerializeField] CutsceneCharacter characterOwner = CutsceneCharacter.Pai;
 
-    [Header("Personagem 2")]
+ 
     [SerializeField] Image secondCharacterImage;
     [SerializeField] CutsceneCharacter secondCharacterOwner = CutsceneCharacter.Filho;
+
+    [Header("Aparecer/Desaparecer (escala 1/0, separado da respiracao)")]
+    [SerializeField] Transform paiAppearPivot;
+    [SerializeField] Transform filhoAppearPivot;
+    [SerializeField] float appearScaleDuration = 0.35f;
+    [SerializeField] Ease appearScaleEase = Ease.OutBack;
+    [SerializeField] Ease disappearScaleEase = Ease.InBack;
 
     [SerializeField] RectTransform dialoguePanel;
     [SerializeField] CanvasGroup canvasGroup;
@@ -91,6 +99,10 @@ public class CutsceneCinematicJuice : MonoBehaviour
         };
         isVisible = startVisible;
         ApplyReveal(revealSpring.value, 0f);
+
+     
+        if (paiAppearPivot != null) paiAppearPivot.localScale = Vector3.zero;
+        if (filhoAppearPivot != null) filhoAppearPivot.localScale = Vector3.zero;
     }
 
     static RectTransform CacheCharacterPose(Image image, out Vector3 basePosition, out Quaternion baseRotation, out Vector3 baseScale)
@@ -123,10 +135,21 @@ public class CutsceneCinematicJuice : MonoBehaviour
         isVisible = !isVisible;
     }
 
-    // sets which character is currently talking so it scales up while the other shrinks a bit
     public void SetSpeaker(CutsceneCharacter speaker)
     {
         currentSpeaker = speaker;
+
+        SetAppearPivot(paiAppearPivot, speaker == CutsceneCharacter.Pai);
+        SetAppearPivot(filhoAppearPivot, speaker == CutsceneCharacter.Filho);
+    }
+
+    void SetAppearPivot(Transform pivot, bool visible)
+    {
+        if (pivot == null) return;
+
+        pivot.DOKill();
+        pivot.DOScale(visible ? Vector3.one : Vector3.zero, appearScaleDuration)
+            .SetEase(visible ? appearScaleEase : disappearScaleEase);
     }
 
     void ApplyReveal(float reveal, float time)

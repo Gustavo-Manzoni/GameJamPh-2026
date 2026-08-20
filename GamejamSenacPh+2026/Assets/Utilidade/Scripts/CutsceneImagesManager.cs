@@ -31,8 +31,6 @@ public class CutsceneImagesManager : MonoBehaviour
     void Start()
     {
         
-        currentIndex = 0;
-        PlayCurrentLine();
     }
     public void Next()
     {
@@ -65,6 +63,8 @@ public class CutsceneImagesManager : MonoBehaviour
             if(Input.GetKeyDown((KeyCode)key))
             {
                 hasPressed = true;
+        currentIndex = 0;
+        PlayCurrentLine();
                 onCanStart?.Invoke();
                 pressAnyKeyText.DOFade(0, .3f).OnComplete(() => Next());
                 break;
