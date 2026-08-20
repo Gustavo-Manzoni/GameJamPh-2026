@@ -411,9 +411,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImagesManager
   cutsceneLines:
   - character: 1
-    clip: {fileID: 8300000, guid: d35d25d0ca59a034fb9aaf73233defc0, type: 3}
+    clip: {fileID: 8300000, guid: 58d42ae81fecd1445ba208a64b07e48a, type: 3}
   - character: 1
-    clip: {fileID: 8300000, guid: 8df079a1a2aa19647b6b207fd0e6d50b, type: 3}
+    clip: {fileID: 8300000, guid: 76b5f2d5d9a33254fad819be1312c19a, type: 3}
   - character: 2
     clip: {fileID: 8300000, guid: 1e7f374af20a5984da0719bfa2b6348d, type: 3}
   - character: 2

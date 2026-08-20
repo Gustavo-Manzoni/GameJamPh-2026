@@ -17,8 +17,7 @@ public class CutsceneCinematicJuice : MonoBehaviour
     [SerializeField] Image secondCharacterImage;
     [SerializeField] CutsceneCharacter secondCharacterOwner = CutsceneCharacter.Filho;
 
-    [Header("Aparecer/Desaparecer (escala 1/0, separado da respiracao)")]
-    [SerializeField] Transform paiAppearPivot;
+      [SerializeField] Transform paiAppearPivot;
     [SerializeField] Transform filhoAppearPivot;
     [SerializeField] float appearScaleDuration = 0.35f;
     [SerializeField] Ease appearScaleEase = Ease.OutBack;
@@ -41,8 +40,7 @@ public class CutsceneCinematicJuice : MonoBehaviour
     [SerializeField] float characterSwayAngle = 1.5f;
     [SerializeField] float characterIdleSpeed = 1.25f;
 
-    [Header("Destaque de quem esta falando")]
-    [SerializeField] float speakingScaleBoost = 0.08f;
+       [SerializeField] float speakingScaleBoost = 0.08f;
     [SerializeField] float notSpeakingScaleShrink = 0.08f;
     [SerializeField] float speakingStiffness = 90f;
     [SerializeField] float speakingDamping = 10f;
