@@ -7,7 +7,6 @@ public class WinOnCollide : MonoBehaviour
     [SerializeField] float xAmountForEachFollower;
     [SerializeField] float baseMoveTime = 0.5f;
     [SerializeField] float timePerFollower = 0.1f;
-    [SerializeField] DemoLoadScene load;
     PlayerController _player;
     FollowChainManager _followChainManager;
     GameManager _gameManager;
