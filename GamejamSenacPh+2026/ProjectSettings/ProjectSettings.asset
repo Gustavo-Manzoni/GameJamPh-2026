@@ -15,7 +15,7 @@ PlayerSettings:
   companyName: T.R.A.S.H
   productName: T.R.A.S.H
   defaultCursor: {fileID: 2800000, guid: d3e07ab239d7cb44ebb9b125e5134096, type: 3}
-  cursorHotspot: {x: 32, y: 32}
+  cursorHotspot: {x: 12, y: 10}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -507,7 +507,10 @@ PlayerSettings:
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
-  m_BuildTargetDefaultTextureCompressionFormat: []
+  m_BuildTargetDefaultTextureCompressionFormat:
+  - serializedVersion: 3
+    m_BuildTarget: iOS
+    m_Formats: 03000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
