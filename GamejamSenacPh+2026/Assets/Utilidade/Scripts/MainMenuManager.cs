@@ -69,6 +69,7 @@ public class MainMenuManager : MonoBehaviour
     {
         clickOptionsCooldown.Tick();
     }
+    public void Leave(){ Application.Quit();}
     public void OnClickOptions()
     {
         if(!clickOptionsCooldown.CanUse)return;
