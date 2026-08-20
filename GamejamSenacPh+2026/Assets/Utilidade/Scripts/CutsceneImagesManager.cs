@@ -39,7 +39,7 @@ public class CutsceneImagesManager : MonoBehaviour
       if(isFirstTime) {isFirstTime= false;return;}
    
       
-        
+        currentIndex++;
             if (currentIndex >= cutsceneLines.Length)
             {
                loadScene.LoadScene(sceneName != string.Empty ? sceneName : UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
