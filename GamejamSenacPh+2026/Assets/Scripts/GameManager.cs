@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         {
             pollution += PollutionIncreaseRatePerSecond * pollutionAttRate;
             barImage.fillAmount = pollution / maxPollution;
-            ratePerSecondText.text = PollutionIncreaseRatePerSecond + "/s";
+            ratePerSecondText.text = "+" + PollutionIncreaseRatePerSecond + "/s";
             timer = 0;
             barSquashStretch.Kick(pollutionUpKick);
             ServiceLocator.Get<SoundManager>().Play(SFX.Tick);
