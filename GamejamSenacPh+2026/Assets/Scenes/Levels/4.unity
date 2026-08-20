@@ -2083,7 +2083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8761908909119327048, guid: af4c51c62fd117c44b3dc9b3ac3b4304, type: 3}
       propertyPath: maxPollution
-      value: 200
+      value: 235
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
