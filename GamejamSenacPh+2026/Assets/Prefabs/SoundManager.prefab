@@ -46,12 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   soundConfigs:
   - sound: 0
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 523924e8918aa8e47a8e695ff5b7a463, type: 3}
     volume: 1
     poolSize: 5
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
     randomPitch: 1
-    pitchVariation: 0.2
+    pitchVariation: 0.15
     spatialAudio3D: 0
     dopplerLevel: 1
     spread: 0
@@ -72,10 +73,11 @@ MonoBehaviour:
     maxDistance: 500
     rolloffMode: 0
   - sound: 1
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: aebae0e89d575dc43ae340319487ef87, type: 3}
     volume: 1
     poolSize: 5
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
     randomPitch: 1
     pitchVariation: 0.5
     spatialAudio3D: 0
@@ -257,6 +259,20 @@ MonoBehaviour:
     mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
     randomPitch: 1
     pitchVariation: 0.1
+    spatialAudio3D: 0
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 20
+    maxDistance: 20
+    rolloffMode: 2
+  - sound: 5
+    clips:
+    - {fileID: 8300000, guid: 523924e8918aa8e47a8e695ff5b7a463, type: 3}
+    volume: 0.7
+    poolSize: 5
+    mixerGroup: {fileID: -2840896217859790737, guid: 3bd23380452ce954286116b75d49d5e1, type: 2}
+    randomPitch: 1
+    pitchVariation: 0.15
     spatialAudio3D: 0
     dopplerLevel: 1
     spread: 0
