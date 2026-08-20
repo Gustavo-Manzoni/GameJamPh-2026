@@ -119,13 +119,16 @@ MonoBehaviour:
   positiveColor: {r: 0, g: 1, b: 0, a: 1}
   negativeColor: {r: 1, g: 0, b: 0, a: 1}
   positivePhrases:
-  - nao vou mais poluir
-  - obrigado pelo incentivo
-  - voce me influenciou positivamente
-  - garrafa de agua
-  - 'Obrigado '
+  - Acho que posso fazer minha parte
+  - Agora sei como ajudar
+  - "Vou mudar meus h\xE1bitos"
+  - "Isso realmente faz diferen\xE7a"
+  - Nunca tinha pensado assim
+  - Posso ensinar isso aos outros
   negativePhrases:
-  - Que reciclagem oque
-  - 'Papo furado '
-  - O que eu estava pensando
-  - Nada a ver esse ponto.
+  - Todo mundo joga lixo fora
+  - "Uma embalagem n\xE3o faz diferen\xE7a"
+  - "Depois algu\xE9m limpa"
+  - "Reciclar d\xE1 muito trabalho"
+  - "\xC9 s\xF3 um pouquinho de lixo"
+  - "N\xE3o tenho tempo pra isso"

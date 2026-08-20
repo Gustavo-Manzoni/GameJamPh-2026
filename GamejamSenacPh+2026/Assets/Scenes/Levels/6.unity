@@ -479,22 +479,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4114923758923415205, guid: 20feb56e1d1ab2241b7960ecfe788718, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114923758923415205, guid: 20feb56e1d1ab2241b7960ecfe788718, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 6690002047286891453, guid: 20feb56e1d1ab2241b7960ecfe788718, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 6690002047286891453, guid: 20feb56e1d1ab2241b7960ecfe788718, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.33
-      objectReference: {fileID: 0}
     - target: {fileID: 8155379559841114537, guid: 20feb56e1d1ab2241b7960ecfe788718, type: 3}
       propertyPath: m_Name
       value: Plantas

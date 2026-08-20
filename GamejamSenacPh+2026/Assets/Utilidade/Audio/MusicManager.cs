@@ -36,6 +36,7 @@ public class MusicManager : MonoBehaviour
 
        if(isUsingSource1)
         {
+            if(musicSource1.clip == clip) return;
             isUsingSource1 = false;
             musicSource1.DOFade(0f, fadeDuration-.2f).OnComplete(() =>
             {
@@ -52,8 +53,9 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
+            if(musicSource2.clip == clip) return;
             isUsingSource1 = true;
-            musicSource1.DOFade(0f, fadeDuration-.2f).OnComplete(() =>
+            musicSource2.DOFade(0f, fadeDuration-.2f).OnComplete(() =>
             {
               
                 musicSource2.Stop();
